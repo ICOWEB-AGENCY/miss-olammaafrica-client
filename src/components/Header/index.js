@@ -90,7 +90,7 @@ export const Header = function ({
               { title: "Our Contestant", link: "our-contestants" },
               { title: "Our Story", link: "our-story" },
             ].map((page, idx) => (
-              <li>
+              <li key={idx}>
                 <Link href={page.link}>
                   <a
                     style={{
