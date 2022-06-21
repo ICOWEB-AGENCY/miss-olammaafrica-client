@@ -108,6 +108,7 @@ const AContestant = () => {
               style={{ marginTop: 20, marginBottom: 20 }}
             >
               <Image
+                alt="close"
                 src="/images/close.svg"
                 width={12}
                 height={12}
@@ -177,6 +178,7 @@ const AContestant = () => {
               style={{ marginTop: 20, marginBottom: 20 }}
             >
               <Image
+                alt="close"
                 src="/images/close.svg"
                 width={12}
                 height={12}
@@ -184,7 +186,12 @@ const AContestant = () => {
               />
             </div>
             <div className="center flex-col">
-              <Image src="/images/success.svg" width={96} height={96} />
+              <Image
+                alt="success"
+                src="/images/success.svg"
+                width={96}
+                height={96}
+              />
               <p className="f18" style={{ color: "#000", marginTop: 17 }}>
                 Success
               </p>
@@ -289,6 +296,7 @@ const AContestant = () => {
             >
               <div style={{ marginBottom: 100 }}>
                 <Image
+                  alt="close"
                   src="/images/close.svg"
                   width={10}
                   height={10}
