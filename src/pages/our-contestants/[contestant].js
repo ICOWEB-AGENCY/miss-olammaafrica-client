@@ -10,6 +10,8 @@ import { usePaystackPayment } from "react-paystack";
 const AContestant = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [votingModalIsOpen, setVotingModalIsOpen] = useState(false);
+  const [isSuccessful, setIsSuccessful] = useState(false);
+
   const [name, setName] = useState("");
   const [votes, setVotes] = useState("");
   const [email, setEmail] = useState("");
@@ -55,6 +57,8 @@ const AContestant = () => {
       const data = await postData("/transactions", body);
       console.log(data);
       setUser(data.user);
+      setIsSuccessful(true);
+      setVotingModalIsOpen(false);
     } catch (err) {
       console.log(err);
     }
@@ -135,6 +139,61 @@ const AContestant = () => {
             bg="rgba(188, 137, 36, 1)"
             style={{ marginTop: 20, width: "100%" }}
             onClick={() => initializePayment(onSuccess, onClose)}
+          />
+        </div>
+      </div>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "rgba(0,0,0,0.6)",
+          position: "fixed",
+          zIndex: 20,
+          display: isSuccessful ? "flex" : "none",
+          padding: 10,
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: "white",
+            padding: 20,
+            width: "100%",
+            height: "fit-content",
+          }}
+          className="br-8"
+        >
+          <div>
+            <div
+              className="flex justify-end"
+              style={{ marginTop: 20, marginBottom: 20 }}
+            >
+              <Image
+                src="/images/close.svg"
+                width={12}
+                height={12}
+                onClick={() => setVotingModalIsOpen(false)}
+              />
+            </div>
+            <div className="center flex-col">
+              <Image src="/images/success.svg" width={96} height={96} />
+              <p className="f18" style={{ color: "#000", marginTop: 17 }}>
+                Success
+              </p>
+              <p
+                className="f14"
+                style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
+              >
+                You have just given chiamaka 400 votes
+              </p>
+            </div>
+          </div>
+
+          <Button
+            title={`Ok`}
+            bg="rgba(188, 137, 36, 1)"
+            style={{ marginTop: 40, width: "100%" }}
+            onClick={() => setIsSuccessful(false)}
           />
         </div>
       </div>
