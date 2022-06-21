@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "heroku-postbuild": "npm run build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",

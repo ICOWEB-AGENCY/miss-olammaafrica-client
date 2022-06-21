@@ -48,10 +48,11 @@ const AContestant = () => {
       email,
       votes,
       contestant: user._id,
-      phone,
+
       name,
       amount,
     };
+    if (phone) body.phone = phone;
     // console.log(body);
     try {
       const data = await postData("/transactions", body);
@@ -68,6 +69,13 @@ const AContestant = () => {
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
     console.log("closed");
+  };
+  const init = () => {
+    try {
+      initializePayment(onSuccess, onClose);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -138,7 +146,7 @@ const AContestant = () => {
             title={`Vote ${user?.firstName}`}
             bg="rgba(188, 137, 36, 1)"
             style={{ marginTop: 20, width: "100%" }}
-            onClick={() => initializePayment(onSuccess, onClose)}
+            onClick={init}
           />
         </div>
       </div>
