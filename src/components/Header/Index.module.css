@@ -1,0 +1,21 @@
+.mainNav {
+  display: flex;
+  column-gap: 39px;
+  padding: 25px 45px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.46);
+}
+
+.mainNavWrapper {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainNavWrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 23px;
+  }
+}

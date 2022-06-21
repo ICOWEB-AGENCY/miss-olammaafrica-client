@@ -1,0 +1,29 @@
+.container {
+  padding: 70px 30px;
+}
+
+.mainNavWrapper {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainNavWrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 23px;
+  }
+
+  .container {
+    padding: 70px 271px;
+  }
+
+  .complainWrapper {
+    max-width: 645px;
+  }
+
+  .formWrapper {
+    padding: 0px 40px;
+  }
+}

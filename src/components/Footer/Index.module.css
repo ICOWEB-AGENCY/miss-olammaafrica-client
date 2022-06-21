@@ -1,0 +1,15 @@
+.linksContainer {
+  padding: 0px 30px;
+  display: flex;
+  flex-direction: column;
+  column-gap: 68px;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .linksContainer {
+    padding: 0px 271px;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

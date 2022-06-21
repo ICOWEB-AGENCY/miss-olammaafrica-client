@@ -1,0 +1,14 @@
+.conts {
+  padding: 53px 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .conts {
+    display: flex;
+
+    grid-template-columns: 1fr 1fr;
+    padding: 90px 271px;
+    justify-content: space-between;
+    column-gap: 10%;
+  }
+}

@@ -1,0 +1,28 @@
+.container {
+  padding: 53px 30px;
+}
+
+.contestantsWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 53px 271px;
+  }
+
+  .about {
+    width: 700px;
+  }
+
+  .about p {
+    text-align: center;
+  }
+
+  .aboutWrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

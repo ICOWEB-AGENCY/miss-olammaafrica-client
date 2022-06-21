@@ -1,0 +1,26 @@
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 14px;
+}
+.visAndMis {
+  padding: 53px 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .heading {
+    font-size: 24px;
+  }
+  .text {
+    font-size: 16px;
+  }
+  .visAndMis {
+    padding: 53px 271px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10%;
+  }
+}

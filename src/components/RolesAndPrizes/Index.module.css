@@ -1,0 +1,13 @@
+.container {
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 0px 271px 50px 271px;
+  }
+
+  .prizesWrapper {
+    display: flex;
+    column-gap: 19px;
+  }
+}

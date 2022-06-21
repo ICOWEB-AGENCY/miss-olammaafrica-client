@@ -1,0 +1,22 @@
+.container {
+  padding: 0px 30px;
+  /* background-color: red; */
+}
+
+.mainNavWrapper {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .mainNavWrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 23px;
+  }
+
+  .container {
+    padding: 0px 271px;
+  }
+}
