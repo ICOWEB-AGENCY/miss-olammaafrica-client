@@ -7,13 +7,33 @@
   display: none;
 }
 
+.complainHeader {
+  padding: 30px;
+}
+
+.headerWrapper {
+  display: block;
+}
+
 @media only screen and (min-width: 768px) {
+  .headerWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .headerWrapper p,
+  .headerWrapper h2 {
+    text-align: center;
+  }
   .mainNavWrapper {
     display: flex;
     justify-content: center;
     position: relative;
     z-index: 10;
     margin-bottom: 23px;
+  }
+
+  .complainHeader {
+    max-width: 645px;
   }
 
   .container {

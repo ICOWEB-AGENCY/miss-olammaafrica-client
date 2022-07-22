@@ -11,7 +11,7 @@ export const CompanySection = function () {
       className={styles.container}
     >
       <div className={styles.aboutWrapper}>
-        <div style={{ marginBottom: 105 }} className={styles.about}>
+        <div className={styles.about}>
           <h2
             style={{
               textAlign: "center",
@@ -38,30 +38,80 @@ export const CompanySection = function () {
           </p>
         </div>
       </div>
-      <VisionAndMission bg="" />
-      <div style={{ marginTop: 30 }}>
-        <h2
-          style={{
-            color: "rgba(255, 255, 255, 0.9)",
-            fontSize: 20,
-            fontWeight: "500",
-            fontFamily: "Circular Std",
-            marginBottom: 17.3,
-          }}
-        >
-          The Contest
-        </h2>
-        <p
-          style={{
-            lineHeight: 1.4,
-            color: "rgba(226, 226, 226, 0.9)",
-            fontFamily: 16,
-          }}
-        >
-          Miss Olamma Africa Pageant is an online voting contest that culminates
-          into a grand finale amidst a high-quality audience, the media and
-          stakeholders across Nigeria
-        </p>
+      <div style={{ columnGap: 50 }} className={styles.companySection}>
+        <div style={{ marginTop: 30 }}>
+          <h2
+            style={{
+              color: "rgba(255, 255, 255, 0.9)",
+              fontSize: 20,
+              fontWeight: "500",
+              fontFamily: "Circular Std",
+              marginBottom: 17.3,
+            }}
+          >
+            The Contest
+          </h2>
+          <p
+            style={{
+              lineHeight: 1.4,
+              color: "rgba(226, 226, 226, 0.9)",
+              fontFamily: 16,
+            }}
+          >
+            Miss Olamma Africa Pageant is an online voting contest that
+            culminates into a grand finale amidst a high-quality audience, the
+            media and stakeholders across Nigeria
+          </p>
+        </div>
+        <div style={{ marginTop: 30 }}>
+          <h2
+            style={{
+              color: "rgba(255, 255, 255, 0.9)",
+              fontSize: 20,
+              fontWeight: "500",
+              fontFamily: "Circular Std",
+              marginBottom: 17.3,
+            }}
+          >
+            The Contest
+          </h2>
+          <p
+            style={{
+              lineHeight: 1.4,
+              color: "rgba(226, 226, 226, 0.9)",
+              fontFamily: 16,
+            }}
+          >
+            Miss Olamma Africa Pageant is an online voting contest that
+            culminates into a grand finale amidst a high-quality audience, the
+            media and stakeholders across Nigeria
+          </p>
+        </div>
+        <div style={{ marginTop: 30 }}>
+          <h2
+            style={{
+              color: "rgba(255, 255, 255, 0.9)",
+              fontSize: 20,
+              fontWeight: "500",
+              fontFamily: "Circular Std",
+              marginBottom: 17.3,
+            }}
+          >
+            The Contest
+          </h2>
+          <p
+            style={{
+              lineHeight: 1.4,
+              color: "rgba(226, 226, 226, 0.9)",
+              fontFamily: 16,
+              // backgroundColor: "red",
+            }}
+          >
+            Miss Olamma Africa Pageant is an online voting contest that
+            culminates into a grand finale amidst a high-quality audience, the
+            media and stakeholders across Nigeria
+          </p>
+        </div>
       </div>
     </section>
   );

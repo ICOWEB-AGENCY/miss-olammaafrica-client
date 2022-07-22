@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getData } from "../../utils";
 import { Button } from "../Button";
+import { Search } from "../Search";
 import styles from "./Index.module.css";
 
 export const Contestants = () => {
@@ -12,7 +13,7 @@ export const Contestants = () => {
   useEffect(() => {
     (async function () {
       try {
-        const data = await getData("/users?limit=6&page=" + page);
+        const data = await getData("/users?limit=8&page=" + page);
         // console.log(data);
         setContestants(data.users);
         setPages(data.pages);
@@ -43,8 +44,15 @@ export const Contestants = () => {
       className={styles.container}
     >
       <div>
+        <Search
+          setContestants={setContestants}
+          setPage={setPage}
+          setPages={setPages}
+        />
         {contestants.length === 0 ? (
-          <p>There is nothing</p>
+          <p style={{ textAlign: "center", color: "#fff", padding: 20 }}>
+            There is no match
+          </p>
         ) : (
           <>
             <ul style={{ padding: 0 }} className={styles.contestantsWrapper}>
@@ -69,6 +77,7 @@ export const Contestants = () => {
                           height: "100%",
                           objectFit: "cover",
                         }}
+                        className="grow"
                       />
                     </Link>
                   </div>
@@ -144,7 +153,7 @@ export const Contestants = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex justify-between">
+            <div className={"flex justify-between " + (!(pages > 1) && "hide")}>
               <Button
                 bg="rgba(188, 137, 36, 1)"
                 title="Previous"

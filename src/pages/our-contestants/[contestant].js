@@ -6,6 +6,7 @@ import { Button, Input, VotingModal } from "../../components";
 import GeneralForm from "../../components/Global/Form/Form";
 import { getData, postData } from "../../utils";
 import { usePaystackPayment } from "react-paystack";
+import styles from "./Index.module.css";
 
 const AContestant = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
@@ -15,13 +16,14 @@ const AContestant = () => {
   const [name, setName] = useState("");
   const [votes, setVotes] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [total, setTotal] = useState("");
+
+  const [total, setTotal] = useState(0);
   const [phone, setPhone] = useState("");
   const [user, setUser] = useState({});
 
   const router = useRouter();
   const contestant = router.query.contestant;
+
   useEffect(() => {
     (async function () {
       try {
@@ -34,6 +36,9 @@ const AContestant = () => {
       }
     })();
   }, [contestant]);
+  useEffect(() => {
+    setTotal(votes * 50);
+  }, [votes]);
   const config = {
     reference: new Date().getTime().toString(),
     email,
@@ -50,7 +55,7 @@ const AContestant = () => {
       contestant: user._id,
 
       name,
-      amount,
+      amount: total,
     };
     if (phone) body.phone = phone;
     // console.log(body);
@@ -91,6 +96,7 @@ const AContestant = () => {
           display: votingModalIsOpen ? "flex" : "none",
           padding: 10,
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div
@@ -99,6 +105,7 @@ const AContestant = () => {
             padding: 20,
             width: "100%",
             height: "fit-content",
+            maxWidth: 650,
           }}
           className="br-8"
         >
@@ -123,26 +130,47 @@ const AContestant = () => {
               Enter the number of votes
             </p>
           </div>
-          <Input
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <Input
-            placeholder="Votes"
-            value={votes}
-            onChange={(e) => setVotes(e.target.value)}
-          />
+          <div className={styles.voteInputs1}>
+            <Input
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className={styles.voteInputs1}>
+            <Input
+              placeholder="Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <div className={styles.voteInputs2}>
+              <Input
+                placeholder="Votes"
+                value={votes}
+                onChange={(e) => setVotes(e.target.value)}
+              />
+              <div style={{ marginTop: 18 }}>
+                <p
+                  className="f10"
+                  style={{ color: "rgba(114, 114, 114, 1)", padding: 12 }}
+                >
+                  {total}
+                  <span
+                    className="f10"
+                    style={{ color: "rgba(114, 114, 114, 1)" }}
+                  >
+                    {" "}
+                    NGN
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
           <Button
             title={`Vote ${user?.firstName}`}
             bg="rgba(188, 137, 36, 1)"
@@ -161,6 +189,7 @@ const AContestant = () => {
           display: isSuccessful ? "flex" : "none",
           padding: 10,
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <div
@@ -169,6 +198,7 @@ const AContestant = () => {
             padding: 20,
             width: "100%",
             height: "fit-content",
+            maxWidth: 600,
           }}
           className="br-8"
         >
@@ -199,7 +229,7 @@ const AContestant = () => {
                 className="f14"
                 style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
               >
-                You have just given chiamaka 400 votes
+                You have just given {user.firstName} {votes} votes
               </p>
             </div>
           </div>
@@ -208,7 +238,13 @@ const AContestant = () => {
             title={`Ok`}
             bg="rgba(188, 137, 36, 1)"
             style={{ marginTop: 40, width: "100%" }}
-            onClick={() => setIsSuccessful(false)}
+            onClick={() => {
+              setEmail("");
+              setVotes("");
+              setName("");
+              setPhone("");
+              setIsSuccessful(false);
+            }}
           />
         </div>
       </div>
@@ -220,11 +256,11 @@ const AContestant = () => {
               style={{ width: "100%", height: 221, objectFit: "cover" }}
             />
           </div>
-          <div className="center" style={{ transform: "translateY(-52px)" }}>
+          <div className="center" style={{ transform: "translateY(-101px)" }}>
             <div
               style={{
-                width: 100,
-                height: 100,
+                width: 200,
+                height: 200,
                 borderRadius: 100,
                 overflow: "hidden",
                 padding: 3,
@@ -242,7 +278,7 @@ const AContestant = () => {
               />
             </div>
           </div>
-          <div className="flex-col align-center" style={{ marginTop: -30 }}>
+          <div className="flex-col align-center" style={{ marginTop: -60 }}>
             <p style={{ color: "rgba(14, 14, 14, 1)" }} className="f18 fw700">
               {" "}
               {`${user?.lastName} ${user?.firstName}`}
@@ -264,7 +300,7 @@ const AContestant = () => {
               title="Go Back"
               bg="transparent"
               style={{ border: "1px solid #fff", padding: "11px 30px" }}
-              onClick={() => setNavIsOpen(true)}
+              onClick={() => router.back()}
             />
             <div
               style={{
@@ -343,37 +379,43 @@ const AContestant = () => {
             </div>
           </div>
         </header>
-        <div style={{ padding: 30 }}>
-          {user?.bio ? (
-            <p style={{ color: "rgba(114, 114, 114, 1)" }}>{user?.bio}</p>
-          ) : (
-            <p style={{ textAlign: "center", padding: 30 }}>No Bio</p>
-          )}
-          <div style={{ marginTop: 20 }}>
-            <p>
-              <span style={{ fontSize: 40, color: "black" }} className="fw500">
-                {user?.votes || 0}
-              </span>
-              <span style={{ color: "rgba(114, 114, 114, 1)" }}>
-                {user?.votes <= 1 ? "vote" : "votes"}
-              </span>
-            </p>
+        <div className={styles.body}>
+          <div style={{ padding: 30 }}>
+            {user?.bio ? (
+              <p style={{ color: "rgba(114, 114, 114, 1)" }}>{user?.bio}</p>
+            ) : (
+              <p style={{ textAlign: "center", padding: 30 }}>No Bio</p>
+            )}
+            <div style={{ marginTop: 20 }}>
+              <p>
+                <span
+                  style={{ fontSize: 40, color: "black" }}
+                  className="fw500"
+                >
+                  {user?.votes || 0}
+                </span>
+                <span style={{ color: "rgba(114, 114, 114, 1)" }}>
+                  {user?.votes <= 1 ? "vote" : "votes"}
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
-
-        <div className="btn" style={{ padding: 20 }}>
-          <Button
-            title="Copy Link"
-            fg="#000"
-            bg="#fff"
-            style={{ width: "100%", marginBottom: 25 }}
-          />
-          <Button
-            title={`Vote ${user?.firstName}`}
-            bg="rgba(188, 137, 36, 1)"
-            style={{ width: "100%" }}
-            onClick={() => setVotingModalIsOpen(true)}
-          />
+          <div className={styles.navWrapper}>
+            <div style={{ padding: 20 }} className={styles.navContainer}>
+              <Button
+                title="Copy Link"
+                fg="#000"
+                bg="#fff"
+                style={{ width: "100%" }}
+              />
+              <Button
+                title={`Vote ${user?.firstName}`}
+                bg="rgba(188, 137, 36, 1)"
+                style={{ width: "100%" }}
+                onClick={() => setVotingModalIsOpen(true)}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

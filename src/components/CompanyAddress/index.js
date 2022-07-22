@@ -1,8 +1,12 @@
 import React from "react";
+import styles from "./Index.module.css";
 
 export const CompanyAddress = function () {
   return (
-    <div style={{ padding: 30, backgroundColor: "rgba(5, 7, 5, 0.8) " }}>
+    <div
+      style={{ backgroundColor: "rgba(5, 7, 5, 0.8) " }}
+      className={styles.container}
+    >
       <div style={{ marginBottom: 24 }}>
         <h3
           style={{

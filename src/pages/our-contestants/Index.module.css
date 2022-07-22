@@ -1,0 +1,40 @@
+.body {
+  padding: 0px;
+}
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 100%;
+}
+
+.navWrapper {
+  display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+  .body {
+    padding: 30px 271px;
+  }
+
+  .navContainer {
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 24px;
+    width: 460px;
+  }
+  .navWrapper {
+    justify-content: flex-end;
+  }
+
+  .voteInputs1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 19px;
+  }
+  .voteInputs2 {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    column-gap: 19px;
+  }
+}

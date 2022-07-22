@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import {
-  CompanySection,
   ContestAndContestant,
   Contestants,
   Footer,
   GrandFinalHostCity,
-  PageHeader,
   RolesAndPrizes,
   TopContestants,
   VisionAndMission,

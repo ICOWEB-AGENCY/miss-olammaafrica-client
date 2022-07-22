@@ -24,6 +24,7 @@ export const GallerySection = function () {
           overflowX: "auto",
           //   padding: "0 40px",
           boxSizing: "border-box",
+          display: "none",
         }}
       >
         <ul
@@ -117,14 +118,10 @@ export const GallerySection = function () {
             />
           </div>
         </div>
-        <div>
+        <div className={styles.galWrapper}>
           <ul
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
               padding: 10,
-              columnGap: 8,
-              rowGap: 20,
             }}
           >
             {[1, 2, 3, 4, 4, 5, 3, 5, 6].map((gal, idx) => (

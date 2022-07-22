@@ -8,13 +8,31 @@
   column-gap: 20px;
 }
 
+.about {
+  margin-bottom: 58px;
+}
+
+.companySection {
+  flex-wrap: wrap;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     padding: 53px 271px;
   }
 
+  .companySection {
+    display: flex;
+
+    justify-content: space-between;
+  }
+  .companySection > div {
+    flex: 0.33;
+  }
+
   .about {
     width: 700px;
+    margin-bottom: 188px;
   }
 
   .about p {

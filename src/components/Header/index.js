@@ -157,7 +157,7 @@ export const Header = function ({
             { menu: "Home", link: "/" },
             { menu: "Road to the crown", link: "/road-to-crown" },
             { menu: "Contestants", link: "/our-contestants" },
-            { menu: "Gallery", link: "/what-we-have-done" },
+            // { menu: "Gallery", link: "/what-we-have-done" },
             { menu: "Our Story", link: "/our-story" },
             { menu: "Contact us", link: "/reach-out" },
           ].map((menu, idx) => (

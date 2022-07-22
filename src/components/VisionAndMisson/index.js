@@ -4,7 +4,8 @@ export const VisionAndMission = function () {
   return (
     <div
       style={{
-        // backgroundColor: "rgba(5, 7, 5, 0.8)",
+        backgroundColor: "rgba(5, 7, 5, 0.8)",
+
         paddingTop: 60,
       }}
       className={styles.visAndMis}

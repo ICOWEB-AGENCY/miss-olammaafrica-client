@@ -42,8 +42,7 @@ export const RolesAndPrizes = () => {
     <div
       style={{
         backgroundColor: "rgba(5, 7, 5, 0.8)",
-        paddingLeft: 30,
-        paddingRight: 30,
+
         paddingBottom: 20,
       }}
       className={styles.container}

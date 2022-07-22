@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  CompanySection,
-  ContestAndContestant,
-  Contestants,
-  Footer,
-  PageHeader,
-  RolesAndPrizes,
-  TopContestants,
-} from "../../components";
+import { Contestants, Footer } from "../../components";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import io from "socket.io-client";
+
 import { Header } from "../../components";
 
 export default function RoadToCrown() {

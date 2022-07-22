@@ -1,0 +1,10 @@
+.container {
+  padding: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 30px 271px;
+    background-color: red;
+  }
+}

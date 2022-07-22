@@ -20,6 +20,17 @@
   display: none;
 }
 
+.galWrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.galWrapper > ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
 @media only screen and (min-width: 768px) {
   .mainNavWrapper {
     display: flex;
@@ -28,13 +39,22 @@
     z-index: 10;
     margin-bottom: 23px;
   }
+  .galWrapper > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+  }
+  .galWrapper {
+    padding-left: 271px;
+    padding-right: 271px;
+  }
 
   .galleryNav {
     justify-content: center;
   }
 
   .galleryWrapper {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 1fr 1.3fr 2fr 1.3fr 1fr;
     align-items: center;
   }
