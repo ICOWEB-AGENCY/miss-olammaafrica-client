@@ -43,7 +43,7 @@ const AContestant = () => {
     reference: new Date().getTime().toString(),
     email,
     amount: 100 * 50 * votes,
-    publicKey: "pk_test_52ac3dbe89ac4fa0c7e991aeb550665815a0f815",
+    publicKey: "pk_live_37a8f4016db31243afa8286b53c20104853ab816"
     // publicKey:process.NODE_ENV==="production"?"pk_live_b46762cf95f045b5d7b9e8ca27e7bc1d28d178be":'pk_test_b8241186ab1ccd92c2a4a302501be9066f4c452c'
   };
   const initializePayment = usePaystackPayment(config);
@@ -55,7 +55,7 @@ const AContestant = () => {
       contestant: user._id,
 
       name,
-      amount: total,
+      amount: total
     };
     if (phone) body.phone = phone;
     // console.log(body);
@@ -96,7 +96,7 @@ const AContestant = () => {
           display: votingModalIsOpen ? "flex" : "none",
           padding: 10,
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <div
@@ -105,7 +105,7 @@ const AContestant = () => {
             padding: 20,
             width: "100%",
             height: "fit-content",
-            maxWidth: 650,
+            maxWidth: 650
           }}
           className="br-8"
         >
@@ -189,7 +189,7 @@ const AContestant = () => {
           display: isSuccessful ? "flex" : "none",
           padding: 10,
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "center"
         }}
       >
         <div
@@ -198,7 +198,7 @@ const AContestant = () => {
             padding: 20,
             width: "100%",
             height: "fit-content",
-            maxWidth: 600,
+            maxWidth: 600
           }}
           className="br-8"
         >
@@ -264,7 +264,7 @@ const AContestant = () => {
                 borderRadius: 100,
                 overflow: "hidden",
                 padding: 3,
-                backgroundColor: "#fff",
+                backgroundColor: "#fff"
               }}
             >
               <img
@@ -273,7 +273,7 @@ const AContestant = () => {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  borderRadius: 100,
+                  borderRadius: 100
                 }}
               />
             </div>
@@ -292,7 +292,7 @@ const AContestant = () => {
               position: "absolute",
               top: 30,
               padding: "0 20px",
-              width: "100%",
+              width: "100%"
             }}
             className="flex justify-between align-center"
           >
@@ -306,7 +306,7 @@ const AContestant = () => {
               style={{
                 textAlign: "center",
 
-                zIndex: 10,
+                zIndex: 10
               }}
             ></div>
           </div>
@@ -319,14 +319,14 @@ const AContestant = () => {
               top: 0,
               zIndex: 10,
               display: navIsOpen ? "flex" : "none",
-              justifyContent: "flex-end",
+              justifyContent: "flex-end"
             }}
           >
             <div
               style={{
                 backgroundColor: "#fff",
                 padding: "50px 34px",
-                width: "70vw",
+                width: "70vw"
               }}
               className="flex-col profile-nav"
             >
@@ -347,7 +347,7 @@ const AContestant = () => {
                       style={{
                         color: "rgba(188, 137, 36, 1)",
                         marginBottom: 20,
-                        display: "inline-block",
+                        display: "inline-block"
                       }}
                       className="f14"
                     >
@@ -361,7 +361,7 @@ const AContestant = () => {
                       style={{
                         color: "rgba(51, 51, 51, 1)",
                         marginBottom: 20,
-                        display: "inline-block",
+                        display: "inline-block"
                       }}
                       className="f14"
                     >
