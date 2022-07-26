@@ -6,7 +6,7 @@ export const ComplainsSection = function () {
   return (
     <section
       style={{
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
+        backgroundColor: "#060806",
       }}
       className={styles.container}
     >

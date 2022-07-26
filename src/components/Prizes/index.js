@@ -4,7 +4,7 @@ import styles from "./Index.module.css";
 export const Prizes = function () {
   return (
     <section
-      style={{ backgroundColor: "rgba(5, 7, 5, 0.8)" }}
+      style={{ backgroundColor: "#060806" }}
       className={styles.container}
     >
       <h2

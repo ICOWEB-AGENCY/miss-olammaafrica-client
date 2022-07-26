@@ -5,7 +5,7 @@ import Image from "next/image";
 export const GallerySection = function () {
   return (
     <section
-      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)", padding: "95px 0" }}
+      style={{ backgroundColor: "#060806", padding: "95px 0" }}
     >
       <h2
         style={{

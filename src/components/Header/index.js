@@ -35,7 +35,7 @@ export const Header = function ({
     >
       <div className="overlay" />
       <div
-        className="flex justify-end"
+        className="flex ham justify-end"
         style={{
           position: "fixed",
           top: 20,
@@ -62,7 +62,7 @@ export const Header = function ({
           display: "flex",
           justifyContent: "flex-end",
         }}
-        className={"burger" + (!navIsOpen && " slide-out")}
+        className={"burger  " + (!navIsOpen && " slide-out")}
       >
         <div
           style={{

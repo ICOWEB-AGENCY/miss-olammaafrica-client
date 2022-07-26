@@ -4,7 +4,7 @@ export const VisionAndMission = function () {
   return (
     <div
       style={{
-        backgroundColor: "rgba(5, 7, 5, 0.8)",
+        backgroundColor: "#060806",
 
         paddingTop: 60,
       }}
