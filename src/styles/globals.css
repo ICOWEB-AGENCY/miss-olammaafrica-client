@@ -202,7 +202,12 @@ input {
     font-size: 20.54px;
     margin-top: 20px;
   }
-
+  .hero-image {
+    background-image: url("../../public/images/hero.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+  }
   .auth-nav {
     width: 600px;
     margin-left: auto;
