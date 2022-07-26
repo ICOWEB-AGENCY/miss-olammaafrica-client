@@ -6,7 +6,7 @@ export const ContestAndContestant = function () {
   return (
     <section
       style={{
-        backgroundColor: "rgba(5, 7, 5, 0.8)",
+        backgroundColor: "#060806",
       }}
       className={styles.conts}
     >

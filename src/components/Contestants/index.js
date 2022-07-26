@@ -40,7 +40,7 @@ export const Contestants = () => {
       //   justifyContent: "center",
       //   backgroundColor: "red",
       // }}
-      style={{ backgroundColor: "rgba(5, 7, 5, 0.8)" }}
+      style={{ backgroundColor: "#060806" }}
       className={styles.container}
     >
       <div>
