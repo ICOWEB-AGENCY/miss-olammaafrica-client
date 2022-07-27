@@ -11,7 +11,7 @@ export const RegistrationAuthModal = ({
       style={{
         minHeight: "100vh",
         width: "100vw",
-        backgroundColor: "rgba(0, 0, 0, 0.25)",
+        // backgroundColor: "rgba(0, 0, 0, 0.25)",
         position: "fixed",
         top: 0,
         left: 0,
@@ -41,7 +41,7 @@ export const RegistrationAuthModal = ({
             <h2 style={{ marginBottom: 8 }} className="f24 fw500">
               Set up your account
             </h2>
-            <p className="f14">Already have an account? Sign in</p>
+            <p className="f14">Already have an account? <button>Sign in</button></p>
           </div>
         </div>
         <form>
@@ -49,7 +49,7 @@ export const RegistrationAuthModal = ({
             title="Password"
             fg="rgba(0, 0, 0, 1)"
             type="text"
-            placeholder="DD-MM-YYYY"
+            placeholder="Password"
           />
           <div>
             <p className="f12" style={{ color: "rgba(114, 114, 114, 1)" }}>

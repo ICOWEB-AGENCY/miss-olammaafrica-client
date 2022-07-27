@@ -7,7 +7,7 @@ import { saveUser } from "../../../redux/store/user";
 import { postData } from "../../../utils";
 import { useDispatch } from "react-redux";
 
-export const LoginModal = ({ modalIsOpen = false, closeModal = () => {} }) => {
+export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end }) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {} }) => {
         display: modalIsOpen ? "flex" : "none",
         height: "100vh",
         width: "100vw",
-        backgroundColor: "rgba(0, 0, 0, 0.25)",
+        // backgroundColor: "rgba(0, 0, 0, 0.25)",
         position: "fixed",
         top: 0,
         left: 0,
@@ -56,11 +56,11 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {} }) => {
             className="pointer hover"
             onClick={closeModal}
           >
-            <Image src="/images/back.svg" width={5} height={10} />
+            <Image src="/images/close.svg" width={12} height={12} />
           </div>
           <div>
             <h2 style={{ marginBottom: 8 }}>Sign In</h2>
-            <p className="f14">Don’t have an account? Sign up</p>
+            <p style={{display: 'flex'}} className="f14">Don’t have an account? <p style={{ marginLeft: '2px'}} className="pointer hover" onClick={()=> end()} >Sign Up</p></p>
           </div>
         </div>
         <form>
