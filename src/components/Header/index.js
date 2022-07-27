@@ -23,6 +23,16 @@ export const Header = function ({
   const [passModalIsOpen, setPassModalIsOpen] = useState(false);
   const [navIsOpen, setNavIsOpen] = useState(false);
 
+  const SignInSwitch =()=> {
+    setLogoutModalIsOpen(true)
+    setLoginModalIsOpen(false)
+  }
+
+  const SignOutSwitch =()=> {
+    setLogoutModalIsOpen(false)
+    setLoginModalIsOpen(true)
+  }
+
   return (
     <header
       className="hero-image"
@@ -226,7 +236,7 @@ export const Header = function ({
               onClick={() => setLogoutModalIsOpen(true)}
             />
           </div>
-          <div
+          {/* <div
             style={{
               display: "flex",
               justifyContent: "center",
@@ -260,16 +270,18 @@ export const Header = function ({
             >
               <img src="./images/forward-arrow.svg" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <LoginModal
         modalIsOpen={loginModalIsOpen}
         closeModal={() => setLoginModalIsOpen(false)}
+        end={() => SignInSwitch()}
       />
       <RegistrationModal
         modalIsOpen={logoutModalIsOpen}
         closeModal={() => setLogoutModalIsOpen(false)}
+        end={() => SignOutSwitch()}
         passModalIsOpen={passModalIsOpen}
         setPassModalIsOpen={setPassModalIsOpen}
       />
