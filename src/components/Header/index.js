@@ -163,10 +163,10 @@ export const Header = function ({
           zIndex: 10,
         }}
       >
-        <img src="/images/logo.svg" />
+        <img style={{width: '60px'}} src="/images/logo.svg" />
       </div>
 
-      <nav className={styles.mainNavWrapper}>
+      <nav className={styles.mainNavWrapper} style={{ marginTop: '-30px'}} >
         <ul className={styles.mainNav}>
           {[
             { menu: "Home", link: "/" },

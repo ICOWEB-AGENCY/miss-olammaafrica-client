@@ -1,7 +1,7 @@
 .mainNav {
   display: flex;
   column-gap: 39px;
-  padding: 25px 45px;
+  padding: 24px 45px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.46);
 }
