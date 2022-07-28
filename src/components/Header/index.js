@@ -275,8 +275,7 @@ export const Header = function ({
       </div>
       <LoginModal
         modalIsOpen={loginModalIsOpen}
-        closeModal={() => setLoginModalIsOpen(false)}
-        // openModal={() => setLogoutModalIsOpen(false)}
+        closeModal={() => setLoginModalIsOpen(false)} 
         end={()=>SignInSwitch()}
       />
       <RegistrationModal
