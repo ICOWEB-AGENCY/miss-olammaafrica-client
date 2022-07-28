@@ -161,7 +161,7 @@ export const RegistrationModal = ({
                 width: 150,
               }}
             >
-              Nationality
+              State Of Origin
             </label>
             <select  
               placeholder="Select Country"
@@ -195,12 +195,12 @@ export const RegistrationModal = ({
             type="text"
             placeholder="Nationality"
           /> */}
-          <Input
+          {/* <Input
             title="State of origin"
             fg="rgba(0, 0, 0, 1)"
             type="text"
             placeholder="Select State"
-          />
+          /> */}
           <Input
             title="Birth Date"
             fg="rgba(0, 0, 0, 1)"

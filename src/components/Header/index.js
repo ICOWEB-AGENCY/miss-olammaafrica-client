@@ -33,6 +33,11 @@ export const Header = function ({
     setLoginModalIsOpen(true)
   }
 
+  const PassSwitch =()=> {
+    setPassModalIsOpen(false)
+    setLoginModalIsOpen(true)
+  }
+
   return (
     <header
       className="hero-image"
@@ -40,7 +45,7 @@ export const Header = function ({
         paddingTop: 70,
         // backgroundImage:
         //   "radial-gradient(79.24% 270.81% at 35.45% 34.74%, rgba(5, 7, 5, 0.8) 0%, rgba(5, 7, 5, 0.712) 100%)",
-        height: "90vh",
+        height: "100vh",
       }}
     >
       <div className="overlay" />
@@ -158,10 +163,10 @@ export const Header = function ({
           zIndex: 10,
         }}
       >
-        <img src="/images/logo.svg" />
+        <img style={{width: '60px'}} src="/images/logo.svg" />
       </div>
 
-      <nav className={styles.mainNavWrapper}>
+      <nav className={styles.mainNavWrapper} style={{ marginTop: '-30px'}} >
         <ul className={styles.mainNav}>
           {[
             { menu: "Home", link: "/" },
@@ -276,12 +281,11 @@ export const Header = function ({
       <LoginModal
         modalIsOpen={loginModalIsOpen}
         closeModal={() => setLoginModalIsOpen(false)} 
-        end={()=>SignInSwitch()}
+        end={SignInSwitch}
       />
       <RegistrationModal
         modalIsOpen={logoutModalIsOpen}
-        closeModal={() => setLogoutModalIsOpen(false)}
-        openModal={() => setLoginModalIsOpen(false)}
+        closeModal={() => setLogoutModalIsOpen(false)} 
         end={SignOutSwitch}
         passModalIsOpen={passModalIsOpen}
         setPassModalIsOpen={setPassModalIsOpen}
@@ -289,6 +293,7 @@ export const Header = function ({
       <RegistrationAuthModal
         modalIsOpen={passModalIsOpen}
         closeModal={() => setPassModalIsOpen(false)}
+        end={PassSwitch}
       />
     </header>
   );
