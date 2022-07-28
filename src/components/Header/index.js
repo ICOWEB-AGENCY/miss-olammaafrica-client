@@ -276,12 +276,14 @@ export const Header = function ({
       <LoginModal
         modalIsOpen={loginModalIsOpen}
         closeModal={() => setLoginModalIsOpen(false)}
-        end={() => SignInSwitch()}
+        // openModal={() => setLogoutModalIsOpen(false)}
+        end={()=>SignInSwitch()}
       />
       <RegistrationModal
         modalIsOpen={logoutModalIsOpen}
         closeModal={() => setLogoutModalIsOpen(false)}
-        end={() => SignOutSwitch()}
+        openModal={() => setLoginModalIsOpen(false)}
+        end={SignOutSwitch}
         passModalIsOpen={passModalIsOpen}
         setPassModalIsOpen={setPassModalIsOpen}
       />

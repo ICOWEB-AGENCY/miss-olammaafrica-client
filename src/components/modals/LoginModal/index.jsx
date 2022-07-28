@@ -7,13 +7,18 @@ import { saveUser } from "../../../redux/store/user";
 import { postData } from "../../../utils";
 import { useDispatch } from "react-redux";
 
-export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end }) => {
+export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end}) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
   const [password, setPassword] = useState("");
 
   const body = { email, password };
+
+  // const ClickHandler =()=> {
+  //   closeModal()
+  //   openModal()
+  // }
 
   const login = async (e) => {
     e.preventDefault();
@@ -60,7 +65,7 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end }) 
           </div>
           <div>
             <h2 style={{ marginBottom: 8 }}>Sign In</h2>
-            <p style={{display: 'flex'}} className="f14">Don’t have an account? <p style={{ marginLeft: '2px'}} className="pointer hover" onClick={()=> end()} >Sign Up</p></p>
+            <p onClick={end} className="f14 pointer hover">Don’t have an account? Sign Up</p>
           </div>
         </div>
         <form>

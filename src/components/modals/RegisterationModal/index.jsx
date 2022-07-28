@@ -90,7 +90,7 @@ export const RegistrationModal = ({
             <h2 style={{ marginBottom: 8 }} className="f24 fw500">
               Set up your account
             </h2>
-            <p onClick={()=> end()}  style={{display: 'flex'}} className="f14">Already have an account? <p style={{ marginLeft: '2px'}} className="pointer hover" onClick={()=> end()} >Sign In</p> </p>
+            <p onClick={end} className="f14 pointer hover">Already have an account? Sign In</p>
           </div>
         </div>
         <form>
