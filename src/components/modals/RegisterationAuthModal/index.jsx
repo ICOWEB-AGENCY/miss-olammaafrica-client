@@ -5,6 +5,7 @@ import { Input, Button } from "../..";
 export const RegistrationAuthModal = ({
   modalIsOpen = false,
   closeModal = () => {},
+  end
 }) => {
   return (
     <div
@@ -41,7 +42,7 @@ export const RegistrationAuthModal = ({
             <h2 style={{ marginBottom: 8 }} className="f24 fw500">
               Set up your account
             </h2>
-            <p className="f14">Already have an account? <button>Sign in</button></p>
+            <p onClick={end} className="f14 pointer hover ">Already have an account? Sign In</p>
           </div>
         </div>
         <form>
