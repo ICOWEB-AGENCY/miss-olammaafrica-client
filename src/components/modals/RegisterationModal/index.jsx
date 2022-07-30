@@ -207,7 +207,7 @@ export const RegistrationModal = ({
             type="date"
             placeholder="DD-MM-YYYY"
           />
-          {/* <div
+          <div
             style={{
               padding: 22,
               boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
@@ -222,7 +222,7 @@ export const RegistrationModal = ({
             >
               Upload Profile photo
             </p>
-          </div> */}
+          </div>
 
           <div style={{ marginTop: 50 }}>
             <Button

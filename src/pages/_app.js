@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
     .catch((error) => {
         console.error('Error:', error); 
     });
-  }, [])
+  },)
 
   return (
     <Provider store={store}>
