@@ -7,7 +7,11 @@ import { saveUser } from "../../../redux/store/user";
 import { postData } from "../../../utils";
 import { useDispatch } from "react-redux";
 
-export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end}) => {
+export const LoginModal = ({
+  modalIsOpen = false,
+  closeModal = () => {},
+  end
+}) => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
@@ -31,9 +35,12 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end}) =
       return;
     }
     try {
-      const data = await postData("/users/login", body);
+      const data = await postData("/auth/login", body);
+      if (data.error) {
+        return;
+      }
       console.log(data);
-      dispatch(saveUser(data.user));
+      dispatch(saveUser(data.data.user));
       router.push("/profile");
     } catch (error) {
       console.log(error);
@@ -50,7 +57,7 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end}) =
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 10,
+        zIndex: 10
       }}
       className="login-modal"
     >
@@ -65,7 +72,9 @@ export const LoginModal = ({ modalIsOpen = false, closeModal = () => {}, end}) =
           </div>
           <div>
             <h2 style={{ marginBottom: 8 }}>Sign In</h2>
-            <p onClick={end} className="f14 pointer hover">Don’t have an account? Sign Up</p>
+            <p onClick={end} className="f14 pointer hover">
+              Don’t have an account? Sign Up
+            </p>
           </div>
         </div>
         <form>
