@@ -303,7 +303,7 @@ export const RegistrationModal = ({
             title="Password"
             fg="rgba(0, 0, 0, 1)"
             type="password"
-            placeholder="Last Name"
+            placeholder="Enter a secured Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
