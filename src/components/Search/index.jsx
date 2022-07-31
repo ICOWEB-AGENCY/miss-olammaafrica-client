@@ -29,7 +29,7 @@ export const Search = function ({ setContestants, setPage, setPages }) {
     })();
   }, [term]);
   return (
-    <div style={{ marginTop: -30, maxWidth: 450 }}>
+    <div  style={{ marginTop: -30, maxWidth: 450, marginLeft: "auto", marginRight: "auto" }}>
       <form>
         <div style={{ margin: "15px 0" }}>
           <label

@@ -81,7 +81,7 @@ export const GallerySection = function () {
         <div className={styles.galleryWrapper}>
           <div>
             <img
-              src="./images/gal1.1.svg"
+              src="./images/1.JPG"
               style={{ width: "100%", objectFit: "cover" }}
             />
           </div>
@@ -124,10 +124,10 @@ export const GallerySection = function () {
               padding: 10,
             }}
           >
-            {[1, 2, 3, 4, 4, 5, 3, 5, 6].map((gal, idx) => (
+            {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'].map((gal, idx) => (
               <li key={idx}>
                 <Image
-                  src="/images/gal3.1.svg"
+                  src={"/images/"+gal+".JPG"}
                   width={"100%"}
                   height="100%"
                   layout="responsive"
@@ -137,7 +137,7 @@ export const GallerySection = function () {
             ))}
           </ul>
         </div>
-        <div
+        {/* <div
           style={{
             display: "flex",
             justifyContent: "center",
@@ -170,9 +170,9 @@ export const GallerySection = function () {
               }}
             />
           </div>
-        </div>
+        </div> */}
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <button
             style={{
               backgroundColor: "transparent",
@@ -186,7 +186,7 @@ export const GallerySection = function () {
           >
             More of the gallery
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

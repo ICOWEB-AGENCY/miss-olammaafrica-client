@@ -44,11 +44,13 @@ export const Contestants = () => {
       className={styles.container}
     >
       <div>
-        <Search
-          setContestants={setContestants}
-          setPage={setPage}
-          setPages={setPages}
-        />
+        <div style={{marginLeft: "auto"}} > 
+          <Search
+            setContestants={setContestants}
+            setPage={setPage}
+            setPages={setPages}
+          />
+        </div>
         {contestants.length === 0 ? (
           <p style={{ textAlign: "center", color: "#fff", padding: 20 }}>
             There is no match

@@ -143,7 +143,7 @@ export const RegistrationModal = ({
               }} 
             >
               <option>Select Country</option> 
-              {country.map((item)=> {
+              {country?.map((item)=> {
                 return(
                   <option key={item.country_name} >{item.country_name}</option>
                 )
@@ -176,7 +176,7 @@ export const RegistrationModal = ({
               <option>Select State</option> 
               {!stateloading ?
                   <> 
-                      {state.map((item)=> {
+                      {state?.map((item)=> {
                           return(
                               <option key={item.state_name} >{item.state_name}</option>
                           )
