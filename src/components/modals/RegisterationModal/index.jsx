@@ -224,11 +224,13 @@ export const RegistrationModal = ({
                 border: "1px solid rgba(255,255,255,0.9)"
               }}
             >
-              <option>Select Country</option>
-              {country.map((item) => {
-                return (
-                  <option key={item.country_name}>{item.country_name}</option>
-                );
+
+              <option>Select Country</option> 
+              {country?.map((item)=> {
+                return(
+                  <option key={item.country_name} >{item.country_name}</option>
+                )
+
               })}
             </select>
           </div>
@@ -257,20 +259,22 @@ export const RegistrationModal = ({
               value={stateOfOrigin}
               onChange={(e) => setStateOfOrigin(e.target.value)}
             >
-              <option>Select State</option>
-              {!stateloading ? (
-                <>
-                  {state.map((item) => {
-                    return (
-                      <option key={item.state_name}>{item.state_name}</option>
-                    );
-                  })}
-                </>
-              ) : (
-                <>
-                  <option>loading...</option>
-                </>
-              )}
+
+              <option>Select State</option> 
+              {!stateloading ?
+                  <> 
+                      {state?.map((item)=> {
+                          return(
+                              <option key={item.state_name} >{item.state_name}</option>
+                          )
+                      })}
+                  </>
+              :
+                  <>
+                      <option>loading...</option>
+                  </>
+              }
+
             </select>
           </div>
 
@@ -283,7 +287,9 @@ export const RegistrationModal = ({
             onChange={(e) => setDateOfBirth(e.target.value)}
           />
           <div
+
             onClick={handleImageClick}
+
             style={{
               padding: 22,
               boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
@@ -304,6 +310,7 @@ export const RegistrationModal = ({
               {imagePath ? "Change Uploaded Image" : "Upload Profile photo"}
             </p>
           </div>
+
           <input
             type="file"
             ref={imageRef}
@@ -325,6 +332,7 @@ export const RegistrationModal = ({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+
 
           <div style={{ marginTop: 50 }}>
             <Button
