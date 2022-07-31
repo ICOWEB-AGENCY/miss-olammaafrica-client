@@ -26,6 +26,7 @@ export const RegistrationModal = ({
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [image, setImage] = useState("");
+  const [imagePath, setImagePath] = useState("");
 
   const [stateOfOrigin, setStateOfOrigin] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
@@ -59,16 +60,21 @@ export const RegistrationModal = ({
         notify(data.error.error.message);
         setStateLoading(false);
         return;
+      } else if (data?.data?.token) {
+        setStateLoading(false);
+        notify("Registration Was successful");
+        setEmail("");
+        setPhone("");
+        setPassword("");
+        setFirstName("");
+        setLastName("");
+        closeModal();
+      } else {
+        notify(
+          "Something went wrong. Please , check your internet connection."
+        );
+        setStateLoading(false);
       }
-      setStateLoading(false);
-      notify("Registration Was successful");
-      setEmail("");
-      setPhone("");
-      setPassword("");
-      setFirstName("");
-      setLastName("");
-
-      closeModal();
     } catch (error) {
       console.log("error");
       setStateLoading(false);
@@ -285,19 +291,31 @@ export const RegistrationModal = ({
             }}
             className="br-8 flex-col center"
           >
-            <Image src="/images/upload.svg" width={40} height={40} />
+            <Image
+              src={imagePath || "/images/upload.svg"}
+              width={imagePath ? 80 : 40}
+              height={imagePath ? 80 : 40}
+              style={{ borderRadius: 8 }}
+            />
             <p
               className="f12"
               style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
             >
-              Upload Profile photo
+              {imagePath ? "Change Uploaded Image" : "Upload Profile photo"}
             </p>
           </div>
           <input
             type="file"
             ref={imageRef}
             style={{ display: "none" }}
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => {
+              if (URL.createObjectURL(e.target.files[0])) {
+                setImagePath(URL.createObjectURL(e.target.files[0]));
+                console.log(URL.createObjectURL(e.target.files[0]));
+              }
+
+              setImage(e.target.files[0]);
+            }}
           />
           <Input
             title="Password"
