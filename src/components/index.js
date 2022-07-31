@@ -19,3 +19,4 @@ export * from "./modals/LoginModal";
 export * from "./modals/RegisterationModal";
 export * from "./modals/RegisterationAuthModal";
 export * from "./modals/VotingModal";
+export * from "./modals/SuccessModal";
