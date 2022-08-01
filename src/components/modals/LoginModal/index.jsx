@@ -108,6 +108,7 @@ export const LoginModal = ({
             placeholder="Enter Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={{ color: "#000" }}
           />
           <Input
             title="Password"
@@ -116,6 +117,7 @@ export const LoginModal = ({
             placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={{ color: "#000" }}
           />
 
           <div style={{ marginTop: 50 }}>

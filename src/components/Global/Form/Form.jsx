@@ -21,7 +21,12 @@ const GeneralForm = () => {
           value={user.lastName}
           style={{ color: "rgba(0,0,0,1)" }}
         />
-        <Input title="Bio" fg="rgba(0, 0, 0, 1)" placeholder="About you" />
+        <Input
+          title="Bio"
+          fg="rgba(0, 0, 0, 1)"
+          placeholder="About you"
+          style={{ color: "#000" }}
+        />
         <Input
           title="Email Address"
           fg="rgba(0, 0, 0, 1)"

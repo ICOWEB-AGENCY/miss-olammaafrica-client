@@ -18,7 +18,7 @@ export const RegistrationAuthModal = ({
         left: 0,
         zIndex: 10,
         overflowY: "auto",
-        display: modalIsOpen ? "flex" : "none",
+        display: modalIsOpen ? "flex" : "none"
       }}
       className="register-auth-modal"
     >
@@ -26,7 +26,7 @@ export const RegistrationAuthModal = ({
         style={{
           backgroundColor: "white",
           maxHeight: "80vh",
-          overflowY: "auto",
+          overflowY: "auto"
         }}
         className="br-8"
       >
@@ -42,7 +42,9 @@ export const RegistrationAuthModal = ({
             <h2 style={{ marginBottom: 8 }} className="f24 fw500">
               Set up your account
             </h2>
-            <p onClick={end} className="f14 pointer hover ">Already have an account? Sign In</p>
+            <p onClick={end} className="f14 pointer hover ">
+              Already have an account? Sign In
+            </p>
           </div>
         </div>
         <form>
@@ -51,6 +53,7 @@ export const RegistrationAuthModal = ({
             fg="rgba(0, 0, 0, 1)"
             type="text"
             placeholder="Password"
+            style={{ color: "#000" }}
           />
           <div>
             <p className="f12" style={{ color: "rgba(114, 114, 114, 1)" }}>
