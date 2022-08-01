@@ -154,7 +154,7 @@ const Profile = () => {
             title="Voting link"
             fg="#000"
             placeholder="your voting link"
-            value={clientBaseURL + "/" + user.votingLink}
+            value={clientBaseURL + "/our-contestants/" + user.votingLink}
             style={{ color: "rgba(0,0,0,1)" }}
           />
 
