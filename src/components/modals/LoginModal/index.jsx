@@ -7,6 +7,9 @@ import { saveUser } from "../../../redux/store/user";
 import { postData } from "../../../utils";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { setCookie, getCookie, getCookies } from "cookies-next";
+
+// console.log(cookieCutter);
 // const notify = (message, color = "#FF4B0D") =>
 //   toast(message, {
 //     style: { color, border: "1px solid " + color }
@@ -54,6 +57,7 @@ export const LoginModal = ({
         return;
       } else if (data?.data?.token) {
         console.log(data);
+        setCookie("token", data.data.token);
         dispatch(saveUser(data.data.user));
         setIsloading(false);
 

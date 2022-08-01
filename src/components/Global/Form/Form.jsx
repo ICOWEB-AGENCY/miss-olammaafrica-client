@@ -1,9 +1,10 @@
 import { Input } from "../../Input";
 import styles from "./Hi.module.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
-const GeneralForm = () => {
-  const { user } = useSelector((state) => state.user);
+const GeneralForm = ({ aUser }) => {
+  const [user, setUser] = useState(aUser);
   return (
     <form style={{ padding: 20 }}>
       <div className={styles.first}>

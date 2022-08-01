@@ -6,10 +6,15 @@ import GeneralForm from "../../components/Global/Form/Form";
 import { useSelector } from "react-redux";
 import clientBaseURL from "../../configs/clientBaseURL";
 import { useRouter } from "next/router";
+import { getData, getProtectedData } from "../../utils";
+import cookie from "cookies";
+import cookieCutter from "cookie-cutter";
+import { setCookie, getCookie, getCookies } from "cookies-next";
 
-const Profile = () => {
+const Profile = ({ data }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
-  const { user } = useSelector((state) => state.user);
+  // const { user } = useSelector((state) => state.user);
+  const [user, setUser] = useState(data);
 
   const router = useRouter();
 
@@ -146,7 +151,7 @@ const Profile = () => {
           </div>
         </div>
       </header>
-      <GeneralForm />
+      <GeneralForm aUser={user} />
 
       <div className="form__bottom__input" style={{ padding: 24 }}>
         <div className="row__input__container">
@@ -185,3 +190,16 @@ const Profile = () => {
 };
 
 export default Profile;
+
+export async function getServerSideProps({ req, res }) {
+  // Fetch data from external API
+  // const router = useRouter();
+  const tokens = getCookies({ req, res });
+  console.log(tokens);
+  console.log(tokens.token);
+
+  const data = await getProtectedData(`/users/a-user`, tokens.token);
+  // console.log(data);
+  // Pass data to the page via props
+  return { props: { data } };
+}
