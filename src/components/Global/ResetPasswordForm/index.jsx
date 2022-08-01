@@ -9,17 +9,20 @@ const ResetPasswordForm = () => {
           title="Old Password"
           fg="rgba(0, 0, 0, 1)"
           placeholder="Old Password"
+          style={{ color: "rgba(0,0,0,1)" }}
         />
         <Input
           title="New Password"
           fg="rgba(0, 0, 0, 1)"
           placeholder="New Password"
+          style={{ color: "rgba(0,0,0,1)" }}
         />
         <Input
           title="Confirm New Password"
           fg="rgba(0, 0, 0, 1)"
           placeholder="Confirm New Password"
           type="tel"
+          style={{ color: "rgba(0,0,0,1)" }}
         />
       </div>
     </form>

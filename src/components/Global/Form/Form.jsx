@@ -12,12 +12,14 @@ const GeneralForm = () => {
           fg="rgba(0, 0, 0, 1)"
           placeholder="First name"
           value={user.firstName}
+          style={{ color: "rgba(0,0,0,1)" }}
         />
         <Input
           title="Last Name"
           fg="rgba(0, 0, 0, 1)"
           placeholder="Last name"
           value={user.lastName}
+          style={{ color: "rgba(0,0,0,1)" }}
         />
         <Input title="Bio" fg="rgba(0, 0, 0, 1)" placeholder="About you" />
         <Input
@@ -25,6 +27,7 @@ const GeneralForm = () => {
           fg="rgba(0, 0, 0, 1)"
           placeholder="Your email address"
           value={user.email}
+          style={{ color: "rgba(0,0,0,1)" }}
         />
         <Input
           title="Phone Number"
@@ -32,6 +35,7 @@ const GeneralForm = () => {
           placeholder="Phone"
           type="tel"
           value={user.phone}
+          style={{ color: "rgba(0,0,0,1)" }}
         />
       </div>
 
@@ -40,7 +44,7 @@ const GeneralForm = () => {
         style={{
           color: "rgba(114, 114, 114, 1)",
           marginBottom: 14,
-          marginTop: 20,
+          marginTop: 20
         }}
       >
         Where are you from
@@ -52,6 +56,7 @@ const GeneralForm = () => {
         placeholder="Your Country"
         type="tel"
         value={user.nationality}
+        style={{ color: "rgba(0,0,0,1)" }}
       />
 
       <Input
@@ -60,6 +65,7 @@ const GeneralForm = () => {
         placeholder="Your State"
         type="text"
         value={user.stateOfOrigin}
+        style={{ color: "rgba(0,0,0,1)" }}
       />
       <Input
         title="Local Govt Area"
@@ -67,6 +73,7 @@ const GeneralForm = () => {
         placeholder="Your LGA"
         type="text"
         value={user.LGA}
+        style={{ color: "rgba(0,0,0,1)" }}
       />
 
       <Input
@@ -75,6 +82,7 @@ const GeneralForm = () => {
         placeholder="Your Village"
         type="text"
         value={user.village}
+        style={{ color: "rgba(0,0,0,1)" }}
       />
 
       <h6
@@ -82,7 +90,7 @@ const GeneralForm = () => {
         style={{
           color: "rgba(114, 114, 114, 1)",
           marginBottom: 14,
-          marginTop: 20,
+          marginTop: 20
         }}
       >
         Home Address
@@ -93,6 +101,7 @@ const GeneralForm = () => {
         fg="rgba(0, 0, 0, 1)"
         placeholder="Your Address"
         type="text"
+        style={{ color: "rgba(0,0,0,1)" }}
       />
 
       <h6
@@ -100,7 +109,7 @@ const GeneralForm = () => {
         style={{
           color: "rgba(114, 114, 114, 1)",
           marginBottom: 14,
-          marginTop: 20,
+          marginTop: 20
         }}
       >
         Biometrics
@@ -113,6 +122,7 @@ const GeneralForm = () => {
           placeholder="Date of Birth"
           type="data"
           value={user.birthday}
+          style={{ color: "rgba(0,0,0,1)" }}
         />
 
         <Input
@@ -120,6 +130,7 @@ const GeneralForm = () => {
           fg="rgba(0, 0, 0, 1)"
           placeholder="height"
           type="data"
+          style={{ color: "rgba(0,0,0,1)" }}
         />
       </div>
     </form>
