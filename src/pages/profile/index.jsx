@@ -9,6 +9,17 @@ import clientBaseURL from "../../configs/clientBaseURL";
 const Profile = () => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = React.useRef(null); 
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
 
   return (
     <div className="container relative">
@@ -147,13 +158,31 @@ const Profile = () => {
   
       <div className='formStylebtn '>
         <div className="forminput" >
-          <div style={{width: "100%"}} > 
-            <Input
+          <div style={{width: "100%", position: 'relative'}} > 
+                    
+            <input
+              ref={textAreaRef}
+              value={clientBaseURL + "/" + user.votingLink}
+              style={{
+                backgroundColor: "#fff",
+                width: "100%",
+                padding: 12,
+                height: "50px",
+                color: '#000',
+                borderRadius: 5,
+                border: "1px solid #DDDDDD",
+              }}
+            />
+            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "50px", right: "20px", display: "flex" }} >
+              <button style={{height: "48px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
+            </div>
+
+            {/* <Input
               title="Voting link"
               fg="#000"
               placeholder="your voting link"
               value={clientBaseURL + "/" + user.votingLink}
-            />
+            /> */}
           </div>
           <div className="formargin" > 
             <p>
@@ -163,12 +192,24 @@ const Profile = () => {
         </div>
         <div className="forminput" style={{marginTop: '20px'}} >
           <div style={{width: "100%"}} > 
-            <Button
+            {/* <Button
               title="Update Password"
               fg="#000"
               bg="#fff"
               style={{ width: "100%", marginBottom: 25 }}
-            />
+            /> */}
+            <button
+            style={{
+              padding: "16.5px 52px",
+              backgroundColor: "#fff",
+              borderRadius: 5,
+              border: "1px solid #BC8924",
+              color: "#BC8924", 
+              fontFamily: "Circular Std",
+              width: "100%"
+            }}>
+              Update Password
+            </button>
           </div>
           <div className="formargin" >  
             <Button
