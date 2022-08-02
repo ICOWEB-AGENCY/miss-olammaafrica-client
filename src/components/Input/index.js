@@ -4,6 +4,7 @@ export const Input = function ({
   title,
   fg = "rgba(255, 255, 255, 1)",
   type = "text",
+  style,
   ...rest
 }) {
   return (

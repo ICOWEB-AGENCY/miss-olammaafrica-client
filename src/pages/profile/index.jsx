@@ -5,8 +5,13 @@ import { Button, Input } from "../../components";
 import GeneralForm from "../../components/Global/Form/Form";
 import { useSelector } from "react-redux";
 import clientBaseURL from "../../configs/clientBaseURL";
+import { useRouter } from "next/router";
+import { getData, getProtectedData } from "../../utils";
+import cookie from "cookies";
+import cookieCutter from "cookie-cutter";
+import { setCookie, getCookie, getCookies } from "cookies-next";
 
-const Profile = () => {
+const Profile = ({ data }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
   const [copySuccess, setCopySuccess] = useState('');
@@ -45,7 +50,7 @@ const Profile = () => {
               borderRadius: 100,
               overflow: "hidden",
               padding: 3,
-              backgroundColor: "#fff",
+              backgroundColor: "#fff"
             }}
           >
             <img
@@ -54,7 +59,7 @@ const Profile = () => {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                borderRadius: 100,
+                borderRadius: 100
               }}
             />
           </div>
@@ -64,7 +69,7 @@ const Profile = () => {
             position: "absolute",
             top: 30,
             padding: "0 20px",
-            width: "100%",
+            width: "100%"
           }}
           className="flex justify-between align-center"
         >
@@ -72,7 +77,7 @@ const Profile = () => {
             style={{
               textAlign: "center",
 
-              zIndex: 10,
+              zIndex: 10
             }}
           >
             <Link href="/">
@@ -95,14 +100,14 @@ const Profile = () => {
             top: 0,
             zIndex: 10,
             display: navIsOpen ? "flex" : "none",
-            justifyContent: "flex-end",
+            justifyContent: "flex-end"
           }}
         >
           <div
             style={{
               backgroundColor: "#fff",
               padding: "50px 34px",
-              width: "70vw",
+              width: "70vw"
             }}
             className="flex-col profile-nav"
           >
@@ -122,7 +127,7 @@ const Profile = () => {
                     style={{
                       color: "rgba(188, 137, 36, 1)",
                       marginBottom: 20,
-                      display: "inline-block",
+                      display: "inline-block"
                     }}
                     className="f14"
                   >
@@ -131,12 +136,12 @@ const Profile = () => {
                 </Link>
               </li>
               <li>
-                <Link href="">
+                <Link href="/profile/change-password">
                   <a
                     style={{
                       color: "rgba(51, 51, 51, 1)",
                       marginBottom: 20,
-                      display: "inline-block",
+                      display: "inline-block"
                     }}
                     className="f14"
                   >
@@ -225,3 +230,16 @@ const Profile = () => {
 };
 
 export default Profile;
+
+export async function getServerSideProps({ req, res }) {
+  // Fetch data from external API
+  // const router = useRouter();
+  const tokens = getCookies({ req, res });
+  console.log(tokens);
+  console.log(tokens.token);
+
+  const data = await getProtectedData(`/users/a-user`, tokens.token);
+  // console.log(data);
+  // Pass data to the page via props
+  return { props: { data } };
+}

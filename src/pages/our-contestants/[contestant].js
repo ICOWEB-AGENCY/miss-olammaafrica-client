@@ -8,7 +8,8 @@ import { getData, postData } from "../../utils";
 import { usePaystackPayment } from "react-paystack";
 import styles from "./Index.module.css";
 
-const AContestant = () => {
+const AContestant = ({ data = {} }) => {
+  console.log(data);
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [votingModalIsOpen, setVotingModalIsOpen] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
@@ -19,23 +20,24 @@ const AContestant = () => {
 
   const [total, setTotal] = useState(0);
   const [phone, setPhone] = useState("");
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(data);
 
   const router = useRouter();
   const contestant = router.query.contestant;
+  console.log(contestant);
 
-  useEffect(() => {
-    (async function () {
-      try {
-        console.log(contestant);
-        const data = await getData(`/users/user/${contestant}`);
-        console.log(data);
-        setUser(data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    })();
-  }, [contestant]);
+  // useEffect(() => {
+  //   (async function () {
+  //     try {
+  //       console.log(contestant);
+  //       const data = await getData(`/users/user/${contestant}`);
+  //       console.log(data);
+  //       setUser(data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   })();
+  // }, []);
   useEffect(() => {
     setTotal(votes * 50);
   }, [votes]);
@@ -229,7 +231,7 @@ const AContestant = () => {
                 className="f14"
                 style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
               >
-                You have just given {user.firstName} {votes} votes
+                You have just given {user?.firstName} {votes} votes
               </p>
             </div>
           </div>
@@ -423,3 +425,16 @@ const AContestant = () => {
 };
 
 export default AContestant;
+
+export async function getServerSideProps({ query }) {
+  // Fetch data from external API
+  // const router = useRouter();
+  const { contestant } = query;
+
+  console.log(contestant);
+
+  const data = await getData(`/users/user/${contestant}`);
+
+  // Pass data to the page via props
+  return { props: { data } };
+}

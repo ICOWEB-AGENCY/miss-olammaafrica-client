@@ -174,6 +174,7 @@ export const RegistrationModal = ({
             placeholder="First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            style={{ color: "#000" }}
           />
           <Input
             title="Last Name"
@@ -182,6 +183,7 @@ export const RegistrationModal = ({
             placeholder="Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            style={{ color: "#000" }}
           />
           <Input
             title="Email"
@@ -190,6 +192,7 @@ export const RegistrationModal = ({
             placeholder="Your Email Adrress"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            style={{ color: "#000" }}
           />
           <Input
             title="Phone number"
@@ -198,6 +201,7 @@ export const RegistrationModal = ({
             placeholder="Your phone number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+            style={{ color: "#000" }}
           />
 
           <div style={{ marginBottom: 14.2 }}>
@@ -224,13 +228,11 @@ export const RegistrationModal = ({
                 border: "1px solid rgba(255,255,255,0.9)"
               }}
             >
-
-              <option>Select Country</option> 
-              {country?.map((item)=> {
-                return(
-                  <option key={item.country_name} >{item.country_name}</option>
-                )
-
+              <option>Select Country</option>
+              {country?.map((item) => {
+                return (
+                  <option key={item.country_name}>{item.country_name}</option>
+                );
               })}
             </select>
           </div>
@@ -259,22 +261,20 @@ export const RegistrationModal = ({
               value={stateOfOrigin}
               onChange={(e) => setStateOfOrigin(e.target.value)}
             >
-
-              <option>Select State</option> 
-              {!stateloading ?
-                  <> 
-                      {state?.map((item)=> {
-                          return(
-                              <option key={item.state_name} >{item.state_name}</option>
-                          )
-                      })}
-                  </>
-              :
-                  <>
-                      <option>loading...</option>
-                  </>
-              }
-
+              <option>Select State</option>
+              {!stateloading ? (
+                <>
+                  {state?.map((item) => {
+                    return (
+                      <option key={item.state_name}>{item.state_name}</option>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <option>loading...</option>
+                </>
+              )}
             </select>
           </div>
 
@@ -285,11 +285,10 @@ export const RegistrationModal = ({
             placeholder="DD-MM-YYYY"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
+            style={{ color: "#000" }}
           />
           <div
-
             onClick={handleImageClick}
-
             style={{
               padding: 22,
               boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
@@ -331,8 +330,8 @@ export const RegistrationModal = ({
             placeholder="Enter a secured Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            style={{ color: "#000" }}
           />
-
 
           <div style={{ marginTop: 50 }}>
             <Button

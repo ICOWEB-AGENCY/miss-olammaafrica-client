@@ -1,6 +1,7 @@
 import { Input } from "../../Input";
 import styles from "./Hi.module.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const GeneralForm = () => {
   const { user } = useSelector((state) => state.user);
@@ -54,7 +55,7 @@ const GeneralForm = () => {
         style={{
           color: "rgba(114, 114, 114, 1)",
           marginBottom: 14,
-          marginTop: 20,
+          marginTop: 20
         }}
       >
         Where are you from
@@ -106,7 +107,7 @@ const GeneralForm = () => {
         style={{
           color: "rgba(114, 114, 114, 1)",
           marginBottom: 14,
-          marginTop: 20,
+          marginTop: 20
         }}
       >
         Home Address
@@ -117,6 +118,7 @@ const GeneralForm = () => {
         fg="rgba(0, 0, 0, 1)"
         placeholder="Your Address"
         type="text"
+        style={{ color: "rgba(0,0,0,1)" }}
       />
       </div>
       <div  className={styles.first+ ' formStyle '}>
