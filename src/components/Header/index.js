@@ -218,11 +218,11 @@ export const Header = function ({
         >
           {subTitle}
         </h2>
-        <div className="auth-nav" style={{ position: "relative" }}>
+        <div className="auth-nav" style={{ position: "relative", margin: "auto",}}>
           <div
             style={{
               display: "flex",
-              justifyContent: "center", 
+              justifyContent: "center",  
               
               columnGap: 16, 
               padding: "0 20px",
