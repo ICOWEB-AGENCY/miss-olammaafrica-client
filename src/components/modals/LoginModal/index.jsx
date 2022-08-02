@@ -176,7 +176,7 @@ export const LoginModal = ({
               bg="rgba(188, 137, 36, 1)"
               fg="#fff"
               style={{ width: "100%", opacity: isLoading ? 0.7 : 1 }}
-              // onClick={login}
+              onClick={login}
               disabled={isLoading}
             />
           </div>

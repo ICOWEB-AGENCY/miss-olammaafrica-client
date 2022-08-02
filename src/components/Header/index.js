@@ -197,7 +197,7 @@ export const Header = function ({
           ))}
         </ul>
       </nav>
-      <div style={{ position: "relative", zIndex: 2 }}>
+      <div style={{ position: "relative", zIndex: 2, height: "100%"}}>
         <h1
           style={{
             color: "rgba(255, 255, 255, 1)",
@@ -218,7 +218,7 @@ export const Header = function ({
         >
           {subTitle}
         </h2>
-        <div className="auth-nav" style={{ position: "relative", margin: "auto",}}>
+        <div className="auth-nav" style={{ height: "100%", marginTOp: "auto",}}>
           <div
             style={{
               display: "flex",
