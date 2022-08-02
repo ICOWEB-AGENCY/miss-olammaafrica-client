@@ -26,6 +26,7 @@ export const LoginModal = ({
   const [password, setPassword] = useState("");
   const [isLoading, setIsloading] = React.useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const body = { email, password };
 
@@ -57,6 +58,7 @@ export const LoginModal = ({
         return;
       } else if (data?.data?.token) {
         console.log(data);
+        setSuccess(true);
         setCookie("token", data.data.token);
         dispatch(saveUser(data.data.user));
         setIsloading(false);
@@ -103,6 +105,19 @@ export const LoginModal = ({
             {error && (
               <p style={{ color: "#FF4B0D", padding: "5px 0" }}>{error}</p>
             )}
+            {success && (
+              <p
+                style={{
+                  color: "rgba(0,255,0,1)",
+                  fontWeight: "700",
+                  padding: "5px 0",
+                  padding: 5
+                  // backgroundColor: "rgba(0,200,0,0.4)"
+                }}
+              >
+                Your login was successful. You are being redirected...
+              </p>
+            )}
           </div>
         </div>
         <form onSubmit={login}>
@@ -130,8 +145,9 @@ export const LoginModal = ({
               title={isLoading ? "A moment..." : "Login"}
               bg="rgba(188, 137, 36, 1)"
               fg="#fff"
-              style={{ width: "100%" }}
+              style={{ width: "100%", opacity: isLoading ? 0.7 : 1 }}
               // onClick={login}
+              disabled={isLoading}
             />
           </div>
         </form>
