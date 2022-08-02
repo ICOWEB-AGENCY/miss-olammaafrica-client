@@ -222,9 +222,9 @@ export const Header = function ({
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
-              columnGap: 16,
-
+              justifyContent: "center", 
+              
+              columnGap: 16, 
               padding: "0 20px",
               marginBottom: 40,
             }}

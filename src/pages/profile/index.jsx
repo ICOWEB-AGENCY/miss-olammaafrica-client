@@ -142,39 +142,43 @@ const Profile = () => {
             />
           </div>
         </div>
-      </header>
-      <GeneralForm />
-
-      <div className="form__bottom__input" style={{ padding: 24 }}>
-        <div className="row__input__container">
-          <Input
-            title="Voting link"
-            fg="#000"
-            placeholder="your voting link"
-            value={clientBaseURL + "/" + user.votingLink}
-          />
-
-          <div className="input__container">
+      </header> 
+        <GeneralForm /> 
+  
+      <div className='formStylebtn '>
+        <div className="forminput" >
+          <div style={{width: "100%"}} > 
+            <Input
+              title="Voting link"
+              fg="#000"
+              placeholder="your voting link"
+              value={clientBaseURL + "/" + user.votingLink}
+            />
+          </div>
+          <div className="formargin" > 
             <p>
               Number of Votes: <span>{user.votes}</span>
-            </p>
+            </p> 
+          </div> 
+        </div>
+        <div className="forminput" style={{marginTop: '20px'}} >
+          <div style={{width: "100%"}} > 
+            <Button
+              title="Update Password"
+              fg="#000"
+              bg="#fff"
+              style={{ width: "100%", marginBottom: 25 }}
+            />
+          </div>
+          <div className="formargin" >  
+            <Button
+              title="Update Profile"
+              bg="rgba(188, 137, 36, 1)"
+              style={{ width: "100%" }}
+            />
           </div>
         </div>
-      </div>
-
-      <div className="btn" style={{ padding: 20 }}>
-        <Button
-          title="Update Password"
-          fg="#000"
-          bg="#fff"
-          style={{ width: "100%", marginBottom: 25 }}
-        />
-        <Button
-          title="Update Profile"
-          bg="rgba(188, 137, 36, 1)"
-          style={{ width: "100%" }}
-        />
-      </div>
+      </div> 
     </div>
   );
 };

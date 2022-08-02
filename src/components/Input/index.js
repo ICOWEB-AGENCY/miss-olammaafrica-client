@@ -14,21 +14,21 @@ export const Input = function ({
           fontSize: 14,
           marginBottom: 9,
           display: "inline-block",
-          marginLeft: 10,
+          marginLeft: 0,
           width: 150,
-        }}
-      >
+        }}>
         {title}
       </label>
       <input
         type={type}
         style={{
-          backgroundColor: "rgba(196, 196, 196, 0.1)",
+          backgroundColor: "#fff",
           width: "100%",
           padding: 12,
-          color: '#fff',
+          height: "50px",
+          color: '#000',
           borderRadius: 5,
-          border: "1px solid rgba(255,255,255,0.9)",
+          border: "1px solid #DDDDDD",
         }}
         {...rest}
       />
