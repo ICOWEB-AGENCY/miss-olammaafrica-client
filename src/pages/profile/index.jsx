@@ -27,7 +27,7 @@ const Profile = ({ data }) => {
   };
 
   return (
-    <div className="container relative">
+    <div style={{paddingBottom: "40px"}} className="container relative">
       <header>
         <div>
           {/* <Image
@@ -172,14 +172,14 @@ const Profile = ({ data }) => {
                 backgroundColor: "#fff",
                 width: "100%",
                 padding: 12,
-                height: "50px",
+                height: "45px",
                 color: '#000',
                 borderRadius: 5,
                 border: "1px solid #DDDDDD",
               }}
             />
-            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "50px", right: "20px", display: "flex" }} >
-              <button style={{height: "48px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
+            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "44px", right: "20px", display: "flex" }} >
+              <button style={{height: "44px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
             </div>
 
             {/* <Input

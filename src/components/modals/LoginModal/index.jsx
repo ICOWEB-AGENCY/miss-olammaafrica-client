@@ -27,6 +27,7 @@ export const LoginModal = ({
   const [isLoading, setIsloading] = React.useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const body = { email, password };
 
@@ -88,19 +89,12 @@ export const LoginModal = ({
       className="login-modal"
     >
       <div style={{ backgroundColor: "white" }} className="br-8">
-        <div className="flex" style={{ columnGap: 30, marginBottom: 32 }}>
+        <div className="flex" style={{ columnGap: 30, marginBottom: 32, paddingLeft: '10px', paddingRight: '10px'  }}>
           <Toaster />
-          <div
-            style={{ padding: 6 }}
-            className="pointer hover"
-            onClick={closeModal}
-          >
-            <Image src="/images/close.svg" width={12} height={12} />
-          </div>
           <div>
             <h2 style={{ marginBottom: 8 }}>Sign In</h2>
             <p onClick={end} className="f14 pointer hover">
-              Don’t have an account? Sign Up
+              Don’t have an account? <span style={{ textDecoration: "underline", color: "#BC8924" }} >Sign Up</span>
             </p>
             {error && (
               <p style={{ color: "#FF4B0D", padding: "5px 0" }}>{error}</p>
@@ -119,8 +113,15 @@ export const LoginModal = ({
               </p>
             )}
           </div>
+          <div
+            style={{ padding: 6,  marginLeft: 'auto' }}
+            className="pointer hover"
+            onClick={closeModal}
+          >
+            <Image src="/images/close.svg" width={12} height={12} />
+          </div>
         </div>
-        <form onSubmit={login}>
+        <div style={{ paddingLeft: '10px', paddingRight: '10px' }} onSubmit={login}>
           <Input
             title="Email Address"
             fg="rgba(0, 0, 0, 1)"
@@ -129,7 +130,7 @@ export const LoginModal = ({
             onChange={(e) => setEmail(e.target.value)}
             style={{ color: "#000" }}
           />
-          <Input
+          {/* <Input
             title="Password"
             fg="rgba(0, 0, 0, 1)"
             type="password"
@@ -137,7 +138,36 @@ export const LoginModal = ({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={{ color: "#000" }}
-          />
+          /> */}
+          <label
+              style={{
+                color: "rgba(0, 0, 0, 1)",
+                fontSize: 14,
+                marginTop: 12,
+                marginBottom: 9,
+                display: "inline-block", 
+                width: 150
+              }}
+            >
+              Password
+            </label>
+          <div style={{width: "100%", position: "relative",  marginBottom: 12 }} >
+            <input
+              style={{
+                backgroundColor: "#fff",
+                width: "100%",
+                padding: 12,
+                height: "45px",
+                color: '#000',
+                borderRadius: 5,
+                border: "1px solid #DDDDDD",
+              }} 
+              onChange={(e) => setPassword(e.target.value)}
+              type={showPassword ? "text": "password"} placeholder="Password" />
+              <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "44px", right: "20px", display: "flex" }} >
+                <button className="pointer" style={{height: "43px", margin: "auto", backgroundColor: "transparent", border: "0px", color: "#BC8924" }} onClick={()=> setShowPassword((prev) => !prev)}  >{showPassword ? "Hide": "Show"}</button>  
+              </div>
+          </div>
 
           <div style={{ marginTop: 50 }}>
             <Button
@@ -150,7 +180,7 @@ export const LoginModal = ({
               disabled={isLoading}
             />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

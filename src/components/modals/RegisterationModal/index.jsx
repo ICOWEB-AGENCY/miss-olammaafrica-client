@@ -28,6 +28,7 @@ export const RegistrationModal = ({
   const [image, setImage] = useState("");
   const [imagePath, setImagePath] = useState("");
 
+  const [showPassword, setShowPassword] = useState(false);
   const [stateOfOrigin, setStateOfOrigin] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const body = {
@@ -146,28 +147,27 @@ export const RegistrationModal = ({
         style={{
           backgroundColor: "white",
           maxHeight: "80vh",
-          overflowY: "auto"
+          overflowY: "auto",
         }}
         className="br-8"
       >
-        <div className="flex" style={{ columnGap: 30, marginBottom: 32 }}>
-          <div
-            style={{ padding: 6 }}
-            className="pointer hover"
-            onClick={closeModal}
-          >
-            <Image src="/images/close.svg" width={12} height={12} />
-          </div>
+        <div className="flex" style={{ columnGap: 30, marginBottom: 32, paddingLeft: '10px', paddingRight: '10px' }}> 
           <div>
             <h2 style={{ marginBottom: 8 }} className="f24 fw500">
               Set up your account
             </h2>
             <p onClick={end} className="f14 pointer hover">
-              Already have an account? Sign In
+              Already have an account? <span style={{ textDecoration: "underline", color: "#BC8924" }} >Sign In</span> 
             </p>
           </div>
+          <div
+            style={{ padding: 6, marginLeft: 'auto' }}
+            className="pointer hover"
+            onClick={closeModal} >
+            <Image src="/images/close.svg" width={12} height={12} />
+          </div>
         </div>
-        <form>
+        <div style={{ paddingLeft: '10px', paddingRight: '10px' }} >
           <Input
             title="First Name"
             fg="rgba(0, 0, 0, 1)"
@@ -210,8 +210,7 @@ export const RegistrationModal = ({
                 color: "rgba(0, 0, 0, 1)",
                 fontSize: 14,
                 marginBottom: 9,
-                display: "inline-block",
-                marginLeft: 10,
+                display: "inline-block", 
                 width: 150
               }}
             >
@@ -221,11 +220,13 @@ export const RegistrationModal = ({
               onChange={(e) => CountryHandler(e)}
               placeholder="Select Country"
               style={{
-                backgroundColor: "rgba(196, 196, 196, 0.1)",
+                backgroundColor: "#fff",
                 width: "100%",
                 padding: 12,
+                height: "45px",
+                color: '#000',
                 borderRadius: 5,
-                border: "1px solid rgba(255,255,255,0.9)"
+                border: "1px solid #DDDDDD",
               }}
             >
               <option>Select Country</option>
@@ -242,8 +243,7 @@ export const RegistrationModal = ({
                 color: "rgba(0, 0, 0, 1)",
                 fontSize: 14,
                 marginBottom: 9,
-                display: "inline-block",
-                marginLeft: 10,
+                display: "inline-block", 
                 width: 150
               }}
             >
@@ -252,11 +252,13 @@ export const RegistrationModal = ({
             <select
               placeholder="Select Country"
               style={{
-                backgroundColor: "rgba(196, 196, 196, 0.1)",
+                backgroundColor: "#fff",
                 width: "100%",
                 padding: 12,
+                height: "45px",
+                color: '#000',
                 borderRadius: 5,
-                border: "1px solid rgba(255,255,255,0.9)"
+                border: "1px solid #DDDDDD",
               }}
               value={stateOfOrigin}
               onChange={(e) => setStateOfOrigin(e.target.value)}
@@ -287,29 +289,28 @@ export const RegistrationModal = ({
             onChange={(e) => setDateOfBirth(e.target.value)}
             style={{ color: "#000" }}
           />
-          <div
-            onClick={handleImageClick}
-            style={{
-              padding: 22,
-              boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
-              marginTop: 18
-            }}
-            className="br-8 flex-col center"
-          >
-            <Image
-              src={imagePath || "/images/upload.svg"}
-              width={imagePath ? 80 : 40}
-              height={imagePath ? 80 : 40}
-              style={{ borderRadius: 8 }}
-            />
-            <p
-              className="f12"
-              style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
+          {!imagePath && ( 
+            <div
+              onClick={handleImageClick}
+              style={{
+                padding: 22,
+                boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
+                marginTop: 18
+              }}
+              className="br-8 flex-col center"
             >
-              {imagePath ? "Change Uploaded Image" : "Upload Profile photo"}
-            </p>
-          </div>
-
+              <Image
+                src={imagePath || "/images/upload.svg"}
+                width={imagePath ? 80 : 40}
+                height={imagePath ? 80 : 40}
+                style={{ borderRadius: 8 }}
+              />
+              <p
+                className="f12"
+                style={{ color: "rgba(114, 114, 114, 1)", marginTop: 14 }}
+              >
+                {imagePath ? "Change Uploaded Image" : "Upload Profile photo"}
+              </p>
           <input
             type="file"
             ref={imageRef}
@@ -323,7 +324,49 @@ export const RegistrationModal = ({
               setImage(e.target.files[0]);
             }}
           />
-          <Input
+            </div>
+          )}
+
+        {imagePath && ( 
+            <div
+              onClick={handleImageClick}
+              style={{
+                padding: 22,
+                boxShadow: "0px 1px 14px rgba(0, 0, 0, 0.06)",
+                marginTop: 18, 
+                backgroundColor: "#F2E7D3",
+                display: "flex", 
+              }}
+              className="br-8 "
+            > 
+              <div className="br-8 " style={{ position: "relative", width:"150px", height:"130px"}} >
+
+                <Image className="br-8 " src={imagePath} width="100%" height="100%" objectFit='cover' layout="fill" />
+              
+              </div>
+              <p
+                className="f12"
+                style={{ color: "rgba(114, 114, 114, 1)", marginTop: "auto", marginBottom: "auto", marginLeft: 12 }}
+              >
+                {imagePath ? "Change Uploaded Image" : "Upload Profile photo"}
+              </p>
+          <input
+            type="file"
+            ref={imageRef}
+            style={{ display: "none" }}
+            onChange={(e) => {
+              if (URL.createObjectURL(e.target.files[0])) {
+                setImagePath(URL.createObjectURL(e.target.files[0]));
+                console.log(URL.createObjectURL(e.target.files[0]));
+              }
+
+              setImage(e.target.files[0]);
+            }}
+          />
+            </div>
+          )}
+
+          {/* <Input
             title="Password"
             fg="rgba(0, 0, 0, 1)"
             type="password"
@@ -331,7 +374,37 @@ export const RegistrationModal = ({
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={{ color: "#000" }}
-          />
+          /> */}
+
+          <label
+              style={{
+                color: "rgba(0, 0, 0, 1)",
+                fontSize: 14,
+                marginTop: 12,
+                marginBottom: 9,
+                display: "inline-block", 
+                width: 150
+              }}
+            >
+              Password
+            </label>
+          <div style={{width: "100%", position: "relative",  marginBottom: 12 }} >
+            <input
+              style={{
+                backgroundColor: "#fff",
+                width: "100%",
+                padding: 12,
+                height: "45px",
+                color: '#000',
+                borderRadius: 5,
+                border: "1px solid #DDDDDD",
+              }} 
+              onChange={(e) => setPassword(e.target.value)}
+              type={showPassword ? "text": "password"} placeholder="Password" />
+              <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "44px", right: "20px", display: "flex" }} >
+                <button className="pointer" style={{height: "43px", margin: "auto", backgroundColor: "transparent", border: "0px", color: "#BC8924" }} onClick={()=> setShowPassword((prev) => !prev)}  >{showPassword ? "Hide": "Show"}</button>  
+              </div>
+          </div>
 
           <div style={{ marginTop: 50 }}>
             <Button
@@ -345,7 +418,7 @@ export const RegistrationModal = ({
               }}
             />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

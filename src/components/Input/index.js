@@ -26,7 +26,7 @@ export const Input = function ({
           backgroundColor: "#fff",
           width: "100%",
           padding: 12,
-          height: "50px",
+          height: "45px",
           color: '#000',
           borderRadius: 5,
           border: "1px solid #DDDDDD",
