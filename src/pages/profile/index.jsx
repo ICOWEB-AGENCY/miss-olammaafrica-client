@@ -13,10 +13,18 @@ import { setCookie, getCookie, getCookies } from "cookies-next";
 
 const Profile = ({ data }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
-  // const { user } = useSelector((state) => state.user);
-  const [user, setUser] = useState(data);
+  const { user } = useSelector((state) => state.user);
+  const [copySuccess, setCopySuccess] = useState('');
+  const textAreaRef = React.useRef(null); 
 
-  const router = useRouter();
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Copied!');
+  };
 
   return (
     <div className="container relative">
@@ -150,41 +158,73 @@ const Profile = ({ data }) => {
             />
           </div>
         </div>
-      </header>
-      <GeneralForm aUser={user} />
+      </header> 
+        <GeneralForm /> 
+  
+      <div className='formStylebtn '>
+        <div className="forminput" >
+          <div style={{width: "100%", position: 'relative'}} > 
+                    
+            <input
+              ref={textAreaRef}
+              value={clientBaseURL + "/" + user.votingLink}
+              style={{
+                backgroundColor: "#fff",
+                width: "100%",
+                padding: 12,
+                height: "50px",
+                color: '#000',
+                borderRadius: 5,
+                border: "1px solid #DDDDDD",
+              }}
+            />
+            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "50px", right: "20px", display: "flex" }} >
+              <button style={{height: "48px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
+            </div>
 
-      <div className="form__bottom__input" style={{ padding: 24 }}>
-        <div className="row__input__container">
-          <Input
-            title="Voting link"
-            fg="#000"
-            placeholder="your voting link"
-            value={clientBaseURL + "/our-contestants/" + user.votingLink}
-            style={{ color: "rgba(0,0,0,1)" }}
-          />
-
-          <div className="input__container">
+            {/* <Input
+              title="Voting link"
+              fg="#000"
+              placeholder="your voting link"
+              value={clientBaseURL + "/" + user.votingLink}
+            /> */}
+          </div>
+          <div className="formargin" > 
             <p>
               Number of Votes: <span>{user.votes}</span>
-            </p>
+            </p> 
+          </div> 
+        </div>
+        <div className="forminput" style={{marginTop: '20px'}} >
+          <div style={{width: "100%"}} > 
+            {/* <Button
+              title="Update Password"
+              fg="#000"
+              bg="#fff"
+              style={{ width: "100%", marginBottom: 25 }}
+            /> */}
+            <button
+            style={{
+              padding: "16.5px 52px",
+              backgroundColor: "#fff",
+              borderRadius: 5,
+              border: "1px solid #BC8924",
+              color: "#BC8924", 
+              fontFamily: "Circular Std",
+              width: "100%"
+            }}>
+              Update Password
+            </button>
+          </div>
+          <div className="formargin" >  
+            <Button
+              title="Update Profile"
+              bg="rgba(188, 137, 36, 1)"
+              style={{ width: "100%" }}
+            />
           </div>
         </div>
-      </div>
-
-      <div className="btn" style={{ padding: 20 }}>
-        <Button
-          onClick={() => router.push("/profile/change-password")}
-          title="Update Password"
-          fg="#000"
-          bg="#fff"
-          style={{ width: "100%", marginBottom: 25 }}
-        />
-        <Button
-          title="Update Profile"
-          bg="rgba(188, 137, 36, 1)"
-          style={{ width: "100%" }}
-        />
-      </div>
+      </div> 
     </div>
   );
 };

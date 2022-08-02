@@ -149,6 +149,26 @@ input {
   margin-top: 16px;
 }
 
+.formStyle{
+  width: 100% 
+}
+
+.formStylebtn{
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.forminput{
+  display: flex;
+  flex-direction: column;
+}
+
+.formargin{
+  margin-left: 0;
+}
+
 .auth-nav {
   /* background-color: red; */
   /* position: relative; */
@@ -194,6 +214,11 @@ input {
   max-width: 600px;
 }
 
+.btnform{
+  padding-left: 20;
+  padding-right: 20;
+}
+
 @media only screen and (min-width: 768px) {
   .main-header {
     font-size: 60px;
@@ -202,6 +227,30 @@ input {
     font-size: 20.54px;
     margin-top: 20px;
   }
+
+  .formStyle{
+    width: 80vw; 
+    margin-left: auto;
+    margin-right: auto;
+  } 
+
+  .formStylebtn{
+    width: 80vw; 
+    margin-left: auto;
+    margin-right: auto;
+  } 
+
+  .forminput{
+    width: 80vw; 
+    display: flex;
+    flex-direction: row;
+  }
+
+  .formargin{
+    width: 100%;
+    margin-left: 20px;
+  }
+
   .hero-image {
     background-image: url("../../public/images/hero.png");
     background-repeat: no-repeat;
