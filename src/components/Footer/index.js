@@ -4,7 +4,7 @@ import styles from "./Index.module.css";
 
 export const Footer = function () {
   return (
-    <footer style={{ backgroundColor: "#060806", paddingTop: 61 }}>
+    <footer style={{ backgroundColor: "#060806", paddingTop: 10 }}>
       <section role="links" className="flex justify-center">
         <ul className="flex" style={{ columnGap: 16 }}>
           {[

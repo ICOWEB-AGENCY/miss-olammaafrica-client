@@ -16,14 +16,14 @@ export const ComplainsSection = function () {
           justifyContent: "center",
         }}
       >
-        <div style={{ marginBottom: 105 }} className={styles.complainWrapper}>
+        <div  className={styles.complainWrapper}>
           <h2
             style={{
               color: "rgba(255, 255, 255, 1)",
               fontSize: 24,
               fontWeight: "700",
               fontFamily: "Typo Grotesk Black",
-              marginBottom: 10,
+              // marginBottom: 10,
             }}
           >
             Got a complain?
