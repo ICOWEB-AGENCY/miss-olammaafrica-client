@@ -1,7 +1,8 @@
 import "../styles/globals.css";
 import store from "../redux/config.store";
 import { Provider } from "react-redux";
-import { wrapper } from "../redux/config.store";
+import { ChakraProvider } from '@chakra-ui/react'
+// import { wrapper } from "../redux/config.store";
 import React from 'react'
 
 function MyApp({ Component, pageProps }) {
@@ -25,9 +26,11 @@ function MyApp({ Component, pageProps }) {
   },)
 
   return (
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
+    <ChakraProvider>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </ChakraProvider>
   );
 }
 

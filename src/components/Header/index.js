@@ -9,6 +9,16 @@ import {
 import styles from "./Index.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
 
 export const Header = function ({
   title = "Miss Olamma Africa",
@@ -37,6 +47,8 @@ export const Header = function ({
     setPassModalIsOpen(false)
     setLoginModalIsOpen(true)
   }
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   return (
     <header
@@ -63,13 +75,85 @@ export const Header = function ({
           src="/images/harm.svg"
           width={24}
           height={24}
-          onClick={() => setNavIsOpen(true)}
+          onClick={() => onOpen()}
         />
       </div>
-      <nav
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}  >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton /> 
+
+          <DrawerBody>
+            <ul style={{marginTop: "70px"}} className="flex-col justify-end align-end">
+              {[
+                { title: "Home", link: "/" },
+                { title: "Road to the crown", link: "/road-to-crown" },
+                { title: "Our Contestant", link: "our-contestants" },
+                { title: "Our Story", link: "our-story" },
+              ].map((page, idx) => (
+                <li key={idx}>
+                  <Link href={page.link}>
+                    <a
+                      style={{
+                        padding: 10,
+                        display: "inline-block",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {page.title}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </DrawerBody>
+
+          <DrawerFooter>
+            <div style={{width: "100%"}} >
+
+            <Button
+              bg="rgba(188, 137, 36, 1)"
+              title="Login"
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                padding: "12px",
+              }}
+              onClick={() => {
+                setLoginModalIsOpen(true);
+                setNavIsOpen(false);
+              }}
+            />
+            <div style={{ marginTop: "10px" }} >
+
+            <Button
+              bg="rgba(188, 137, 36, 1)"
+              title="Register"
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                padding: "12px",
+              }}
+              onClick={() => {
+                setLogoutModalIsOpen(true);
+                setNavIsOpen(false);
+              }}
+            /> 
+            </div>
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+      {/* <nav
         style={{
           width: "100vw",
-          height: "100vh",
+          height: "100%",
           position: "fixed",
           top: 0,
           backgroundColor: "rgba(0,0,0,0.6)",
@@ -154,7 +238,7 @@ export const Header = function ({
             />
           </div>
         </div>
-      </nav>
+      </nav> */}
       <div
         style={{
           textAlign: "center",
@@ -163,7 +247,7 @@ export const Header = function ({
           zIndex: 10,
         }}
       >
-        <img style={{width: '60px'}} src="/images/logo.svg" />
+        <img style={{width: '60px', marginLeft: "auto", marginRight: "auto"}} src="/images/logo.svg" />
       </div>
 
       <nav className={styles.mainNavWrapper} style={{ marginTop: '-30px'}} >
@@ -197,13 +281,12 @@ export const Header = function ({
           ))}
         </ul>
       </nav>
-      <div style={{ position: "relative", zIndex: 2, height: "100%"}}>
+      <div style={{ position: "relative", zIndex: 2, height: "60%", display: "flex", flexDirection: "column"}}>
         <h1
           style={{
             color: "rgba(255, 255, 255, 1)",
           }}
-          className="main-header"
-        >
+          className="main-header">
           {title}
         </h1>
         <h2
@@ -218,7 +301,7 @@ export const Header = function ({
         >
           {subTitle}
         </h2>
-        <div className="auth-nav" style={{ height: "100%", marginTOp: "auto",}}>
+        <div className="auth-nav" style={{marginTop: "auto", marginBottom: "auto"}}>
           <div
             style={{
               display: "flex",

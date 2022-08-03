@@ -21,7 +21,7 @@ export const LoginModal = ({
   end
 }) => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [login, setEmail] = useState("");
   const dispatch = useDispatch();
   const [password, setPassword] = useState("");
   const [isLoading, setIsloading] = React.useState(false);
@@ -29,18 +29,18 @@ export const LoginModal = ({
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const body = { email, password };
+  const body = { login, password };
 
   // const ClickHandler =()=> {
   //   closeModal()
   //   openModal()
   // }
 
-  const login = async (e) => {
+  const loginbtn = async (e) => {
     setError("");
     e.preventDefault();
     setIsloading(true);
-    if (!body.email) {
+    if (!body.login) {
       console.log("error-email");
       setIsloading(false);
       return;
@@ -126,7 +126,7 @@ export const LoginModal = ({
             title="Email Address"
             fg="rgba(0, 0, 0, 1)"
             placeholder="Enter Email"
-            value={email}
+            value={login}
             onChange={(e) => setEmail(e.target.value)}
             style={{ color: "#000" }}
           />
@@ -176,7 +176,7 @@ export const LoginModal = ({
               bg="rgba(188, 137, 36, 1)"
               fg="#fff"
               style={{ width: "100%", opacity: isLoading ? 0.7 : 1 }}
-              onClick={login}
+              onClick={loginbtn}
               disabled={isLoading}
             />
           </div>
