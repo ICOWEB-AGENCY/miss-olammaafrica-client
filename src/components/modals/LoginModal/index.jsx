@@ -34,7 +34,7 @@ export const LoginModal = ({
   // const ClickHandler =()=> {
   //   closeModal()
   //   openModal()
-  // }
+  // } 
 
   const loginbtn = async (e) => {
     setError("");
@@ -61,6 +61,7 @@ export const LoginModal = ({
         console.log(data);
         setSuccess(true);
         setCookie("token", data.data.token);
+        localStorage.setItem("token", data.data.token)
         dispatch(saveUser(data.data.user));
         setIsloading(false);
 
@@ -157,15 +158,15 @@ export const LoginModal = ({
                 backgroundColor: "#fff",
                 width: "100%",
                 padding: 12,
-                height: "45px",
+                height: "49px",
                 color: '#000',
                 borderRadius: 5,
                 border: "1px solid #DDDDDD",
               }} 
               onChange={(e) => setPassword(e.target.value)}
               type={showPassword ? "text": "password"} placeholder="Password" />
-              <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "44px", right: "20px", display: "flex" }} >
-                <button className="pointer" style={{height: "43px", margin: "auto", backgroundColor: "transparent", border: "0px", color: "#BC8924" }} onClick={()=> setShowPassword((prev) => !prev)}  >{showPassword ? "Hide": "Show"}</button>  
+              <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "48px", right: "20px", display: "flex" }} >
+                <button className="pointer" style={{height: "47px", margin: "auto", backgroundColor: "transparent", border: "0px", color: "#BC8924" }} onClick={()=> setShowPassword((prev) => !prev)}  >{showPassword ? "Hide": "Show"}</button>  
               </div>
           </div>
 
