@@ -17,7 +17,7 @@ export const RegistrationModal = ({
   end
 }) => {
   const imageRef = useRef();
-  const [country, setCountry] = React.useState([]);
+  const [country, setCountry] = React.useState(["loading"]);
   const [selectedcountry, setSelectedCountry] = React.useState("");
   const [stateloading, setStateLoading] = React.useState(false);
   const [firstName, setFirstName] = useState("");
