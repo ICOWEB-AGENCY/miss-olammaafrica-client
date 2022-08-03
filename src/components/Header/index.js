@@ -127,6 +127,7 @@ export const Header = function ({
               onClick={() => {
                 setLoginModalIsOpen(true);
                 setNavIsOpen(false);
+                onClose();
               }}
             />
             <div style={{ marginTop: "10px" }} >
@@ -143,6 +144,7 @@ export const Header = function ({
               onClick={() => {
                 setLogoutModalIsOpen(true);
                 setNavIsOpen(false);
+                onClose();
               }}
             /> 
             </div>
