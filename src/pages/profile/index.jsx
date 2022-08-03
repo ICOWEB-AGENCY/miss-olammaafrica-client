@@ -54,7 +54,7 @@ const Profile = ({ data }) => {
             }}
           >
             <img
-              src={user.avatar || "/images/gal3.1.svg"}
+              src={user.avatar}
               style={{
                 width: "100%",
                 height: "100%",
@@ -195,7 +195,7 @@ const Profile = ({ data }) => {
             </p> 
           </div> 
         </div>
-        <div className="forminput" style={{marginTop: '20px'}} >
+        <div className="forminput" >
           <div style={{width: "100%"}} > 
             {/* <Button
               title="Update Password"
@@ -211,7 +211,8 @@ const Profile = ({ data }) => {
               border: "1px solid #BC8924",
               color: "#BC8924", 
               fontFamily: "Circular Std",
-              width: "100%"
+              width: "100%",
+marginTop: '20px'
             }}>
               Update Password
             </button>
@@ -220,7 +221,7 @@ const Profile = ({ data }) => {
             <Button
               title="Update Profile"
               bg="rgba(188, 137, 36, 1)"
-              style={{ width: "100%" }}
+              style={{ width: "100%",marginTop: '20px'}}
             />
           </div>
         </div>
