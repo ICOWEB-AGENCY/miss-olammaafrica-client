@@ -54,7 +54,7 @@ const Profile = ({ data }) => {
             }}
           >
             <img
-              src={user.avatar || "/images/gal3.1.svg"}
+              src={user.avatar}
               style={{
                 width: "100%",
                 height: "100%",
