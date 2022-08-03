@@ -10,11 +10,23 @@ import { getData, getProtectedData } from "../../utils";
 import cookie from "cookies";
 import cookieCutter from "cookie-cutter";
 import { setCookie, getCookie, getCookies } from "cookies-next";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
 
 const Profile = ({ data }) => {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
   const [copySuccess, setCopySuccess] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
   const textAreaRef = React.useRef(null); 
 
   function copyToClipboard(e) {
@@ -88,10 +100,70 @@ const Profile = ({ data }) => {
             title="Menu"
             bg="transparent"
             style={{ border: "1px solid #fff", padding: "11px 30px" }}
-            onClick={() => setNavIsOpen(true)}
+            onClick={() => onOpen()}
           />
         </div>
-        <div
+
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}  >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton /> 
+ 
+          <DrawerBody>
+            <ul style={{ marginBottom: 100, marginTop: '100px' }}>
+              <li>
+                <Link href="">
+                  <a
+                    style={{
+                      color: "rgba(188, 137, 36, 1)",
+                      marginBottom: 20,
+                      display: "inline-block"
+                    }}
+                    className="f14"
+                  >
+                    Profile
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile/change-password">
+                  <a
+                    style={{
+                      color: "rgba(51, 51, 51, 1)",
+                      marginBottom: 20,
+                      display: "inline-block"
+                    }}
+                    className="f14"
+                  >
+                    Change Password
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </DrawerBody>
+
+          <DrawerFooter>
+            <div style={{width: "100%"}} >  
+              <Button
+                title="Log out"
+                bg="transparent"
+                fg="rgba(188, 137, 36, 1)"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "12px",
+                }}
+              /> 
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+        {/* <div
           style={{
             width: "100vw",
             height: "100vh",
@@ -157,7 +229,7 @@ const Profile = ({ data }) => {
               style={{ padding: "11px 45px" }}
             />
           </div>
-        </div>
+        </div> */}
       </header> 
         <GeneralForm /> 
   
@@ -172,14 +244,14 @@ const Profile = ({ data }) => {
                 backgroundColor: "#fff",
                 width: "100%",
                 padding: 12,
-                height: "45px",
+                height: "49px",
                 color: '#000',
                 borderRadius: 5,
                 border: "1px solid #DDDDDD",
               }}
             />
-            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "44px", right: "20px", display: "flex" }} >
-              <button style={{height: "44px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
+            <div style={{marginLeft: "auto", position: "absolute", top: "0px", height: "48px", right: "20px", display: "flex" }} >
+              <button style={{height: "47px", margin: "auto", backgroundColor: "#fff", border: "0px", color: "#BC8924" }} onClick={copyToClipboard}>{copySuccess === "" ? 'COPY' : copySuccess}</button>  
             </div>
 
             {/* <Input
@@ -189,11 +261,46 @@ const Profile = ({ data }) => {
               value={clientBaseURL + "/" + user.votingLink}
             /> */}
           </div>
-          <div className="formargin" > 
+          <div style={{
+              marginTop: '20px'}} className="formargin" > 
             <p>
               Number of Votes: <span>{user.votes}</span>
             </p> 
           </div> 
+        </div>
+        <div className="forminput" >
+          <div style={{width: "100%"}} > 
+            {/* <Button
+              title="Update Password"
+              fg="#000"
+              bg="#fff"
+              style={{ width: "100%", marginBottom: 25 }}
+            /> */}
+            <Link href="" >
+              <div
+            style={{
+              padding: "16.5px 52px",
+              backgroundColor: "#fff",
+              borderRadius: 5,
+              border: "1px solid #BC8924",
+              color: "#BC8924", 
+              fontFamily: "Circular Std",
+              width: "100%",
+              marginTop: '20px',
+              textAlign: "center"
+            }}>
+              Join Group
+              </div>
+            </Link>
+          </div>
+          <div className="formargin" >  
+            <div style={{width: "100%"}} ></div>
+            {/* <Button
+              title="Update Profile"
+              bg="rgba(188, 137, 36, 1)"
+              style={{ width: "100%", marginTop: '20px'}}
+            /> */}
+          </div>
         </div>
         <div className="forminput" >
           <div style={{width: "100%"}} > 
@@ -212,7 +319,7 @@ const Profile = ({ data }) => {
               color: "#BC8924", 
               fontFamily: "Circular Std",
               width: "100%",
-marginTop: '20px'
+              marginTop: '20px'
             }}>
               Update Password
             </button>
@@ -221,7 +328,7 @@ marginTop: '20px'
             <Button
               title="Update Profile"
               bg="rgba(188, 137, 36, 1)"
-              style={{ width: "100%",marginTop: '20px'}}
+              style={{ width: "100%", marginTop: '20px'}}
             />
           </div>
         </div>
@@ -232,15 +339,15 @@ marginTop: '20px'
 
 export default Profile;
 
-export async function getServerSideProps({ req, res }) {
-  // Fetch data from external API
-  // const router = useRouter();
-  const tokens = getCookies({ req, res });
-  console.log(tokens);
-  console.log(tokens.token);
+// export async function getServerSideProps({ req, res }) {
+//   // Fetch data from external API
+//   // const router = useRouter();
+//   const tokens = getCookies({ req, res });
+//   console.log(tokens);
+//   console.log(tokens.token);
 
-  const data = await getProtectedData(`/users/a-user`, tokens.token);
-  // console.log(data);
-  // Pass data to the page via props
-  return { props: { data } };
-}
+//   const data = await getProtectedData(`/users/a-user`, tokens.token);
+//   // console.log(data);
+//   // Pass data to the page via props
+//   return { props: { data } };
+// }

@@ -12,8 +12,7 @@ import Image from "next/image";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
+  DrawerFooter, 
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -303,65 +302,32 @@ export const Header = function ({
         >
           {subTitle}
         </h2>
-        <div className="auth-nav" style={{marginTop: "auto", marginBottom: "auto"}}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",  
-              
-              columnGap: 16, 
-              padding: "0 20px",
-              marginBottom: 40,
-            }}
-          >
-            <Button
-              bg="rgba(188, 137, 36, 0.2)"
-              style={{ flex: 1 }}
-              onClick={() => setLoginModalIsOpen(true)}
-            />
-            <Button
-              bg="rgba(188, 137, 36, 1)"
-              title="Register"
-              style={{ flex: 1 }}
-              onClick={() => setLogoutModalIsOpen(true)}
-            />
+        {localStorage.getItem("token") && ( 
+          <div className="auth-nav" style={{marginTop: "auto", marginBottom: "auto"}}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",  
+                
+                columnGap: 16, 
+                padding: "0 20px",
+                marginBottom: 40,
+              }}
+            >
+              <Button
+                bg="rgba(188, 137, 36, 0.2)"
+                style={{ flex: 1 }}
+                onClick={() => setLoginModalIsOpen(true)}
+              />
+              <Button
+                bg="rgba(188, 137, 36, 1)"
+                title="Register"
+                style={{ flex: 1 }}
+                onClick={() => setLogoutModalIsOpen(true)}
+              />
+            </div> 
           </div>
-          {/* <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              columnGap: 20,
-              paddingBottom: 85,
-            }}
-          >
-            <div
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 50,
-                backgroundColor: "rgba(188, 137, 36, 0.2)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img src="./images/back-arrow.svg" />
-            </div>
-            <div
-              style={{
-                width: 60,
-                height: 60,
-                borderRadius: 50,
-                backgroundColor: "rgba(188, 137, 36, 0.2)",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <img src="./images/forward-arrow.svg" />
-            </div>
-          </div> */}
-        </div>
+        )}
       </div>
       <LoginModal
         modalIsOpen={loginModalIsOpen}

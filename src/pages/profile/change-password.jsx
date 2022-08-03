@@ -4,9 +4,21 @@ import React, { useState } from "react";
 import { Button, Input } from "../../components";
 import GeneralForm from "../../components/Global/Form/Form";
 import ResetPasswordForm from "../../components/Global/ResetPasswordForm";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
 
 const ChangePassword = () => {
-  const [navIsOpen, setNavIsOpen] = useState(false);
+  // const [navIsOpen, setNavIsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
   return (
     <div
       className="container relative"
@@ -38,7 +50,7 @@ const ChangePassword = () => {
             }}
           >
             <img
-              src="/images/gal3.1.svg"
+              // src="/images/gal3.1.svg"
               style={{
                 width: "100%",
                 height: "100%",
@@ -70,10 +82,71 @@ const ChangePassword = () => {
             title="Menu"
             bg="transparent"
             style={{ border: "1px solid #fff", padding: "11px 30px" }}
-            onClick={() => setNavIsOpen(true)}
+            onClick={() => onOpen()}
           />
         </div>
-        <div
+
+
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}  >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton /> 
+ 
+          <DrawerBody>
+            <ul style={{ marginBottom: 100, marginTop: '100px' }}>
+              <li>
+                <Link href="/profile">
+                  <a
+                    style={{
+                      color: "rgba(188, 137, 36, 1)",
+                      marginBottom: 20,
+                      display: "inline-block"
+                    }}
+                    className="f14"
+                  >
+                    Profile
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/profile/change-password">
+                  <a
+                    style={{
+                      color: "rgba(51, 51, 51, 1)",
+                      marginBottom: 20,
+                      display: "inline-block"
+                    }}
+                    className="f14"
+                  >
+                    Change Password
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </DrawerBody>
+
+          <DrawerFooter>
+            <div style={{width: "100%"}} >  
+              <Button
+                title="Log out"
+                bg="transparent"
+                fg="rgba(188, 137, 36, 1)"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "12px",
+                }}
+              /> 
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+        {/* <div
           style={{
             width: "100vw",
             height: "100vh",
@@ -139,11 +212,11 @@ const ChangePassword = () => {
               style={{ padding: "11px 45px" }}
             />
           </div>
-        </div>
+        </div> */}
       </header>
       <ResetPasswordForm />
 
-      <div className="btn flex justify-between" style={{ padding: 20 }}>
+      {/* <div className="btn flex justify-between" style={{ padding: 20 }}>
         <Button
           title="Go Back"
           fg="#000"
@@ -155,7 +228,37 @@ const ChangePassword = () => {
           bg="rgba(188, 137, 36, 1)"
           style={{ flex: 0.6, padding: 11 }}
         />
-      </div>
+      </div> */}
+
+      <div className='formStylebtn '>
+        <div style={{marginLeft: "auto", marginRight: "auto"}} className="forminput" >
+            <div style={{width: "100%"}} >  
+              <Link href="/profile">
+                <div 
+              style={{
+                padding: "16.5px 52px",
+                backgroundColor: "#fff",
+                borderRadius: 5,
+                border: "1px solid #BC8924",
+                color: "#BC8924", 
+                fontFamily: "Circular Std",
+                width: "100%",
+                textAlign: "center",
+                marginTop: '20px'
+              }} >
+                Go Back </div>
+                
+              </Link>
+            </div>
+            <div className="formargin" >  
+              <Button
+                title="Update Password"
+                bg="rgba(188, 137, 36, 1)"
+                style={{ width: "100%", marginTop: '20px'}}
+              />
+            </div>
+          </div>
+        </div>
     </div>
   );
 };
